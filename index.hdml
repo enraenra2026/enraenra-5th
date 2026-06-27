@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>煙羅煙羅 5th Anniversary</title>
+  <style>
+    /* ===== リセット ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ===== カラートークン ===== */
+    :root {
+      --bg:        #0a0a0a;
+      --bg2:       #111111;
+      --border:    #2a2a2a;
+      --white:     #e8e8e0;
+      --dim:       #888880;
+      --accent:    #c8b89a;
+      --glitch1:   #4affda;
+      --glitch2:   #ff4a6e;
+    }
+
+    /* ===== ベース ===== */
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "MS Gothic", "ＭＳ ゴシック", "Hiragino Kaku Gothic ProN", monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== ローディング画面 ===== */
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      transition: opacity 0.8s ease;
+    }
+    #loading.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loading-text {
+      font-family: "MS Gothic", monospace;
+      color: var(--accent);
+      font-size: 13px;
+      
+Claudeはこの応答を完了できませんでした。しばらくしてからもう一度お試しください。
+
+次回はCoworkでお試しください
+
+複雑なタスクをClaudeに任せて、独立して処理させることができます。完了した結果を後で確認できます。
+
