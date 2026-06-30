@@ -37,7 +37,7 @@
     opacity: 0.6;
     background-image: url("tile-bg.png");
     background-repeat: repeat;
-    background-size: 880px auto;
+    background-size: 440px auto;
     filter: saturate(1.8);
   }
 
@@ -188,21 +188,15 @@
     flex-wrap: wrap;
   }
   .sns-banner {
-    width: 100px;
-    height: 30px;
-    border: 1px solid #555;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    color: #ddd;
-    text-decoration: none;
-    background: #1a1a1a;
-    gap: 4px;
+    display: inline-block;
+    line-height: 0;
   }
-  .sns-banner.hookah { background: linear-gradient(90deg,#222,#444); }
-  .sns-banner.twitter { background: linear-gradient(90deg,#1a8cd8,#0c4a7a); }
-  .sns-banner.insta { background: linear-gradient(90deg,#3a3a3a,#1a1a1a); }
+  .sns-banner img {
+    height: 32px;
+    width: auto;
+    display: block;
+    image-rendering: pixelated;
+  }
 
   footer {
     text-align: center;
@@ -270,9 +264,15 @@
   </nav>
 
   <div class="sns-row">
-    <a href="#" class="sns-banner hookah">🔺norgilejapon.com</a>
-    <a href="#" class="sns-banner twitter">🐦 twitter</a>
-    <a href="https://www.instagram.com/" class="sns-banner insta">📷 Instagram</a>
+    <a href="https://nargilejapan.com" target="_blank" class="sns-banner">
+      <img src="banner-nargile.gif" alt="nargilejapan.com">
+    </a>
+    <a href="https://x.com/Sendai_EnraEnra" target="_blank" class="sns-banner">
+      <img src="banner-twitter.gif" alt="twitter">
+    </a>
+    <a href="https://www.instagram.com/sendai_enra_enra/" target="_blank" class="sns-banner">
+      <img src="banner-instagram.gif" alt="Instagram">
+    </a>
   </div>
 
   <hr style="border:none; border-top:1px dashed #4a2020; margin:24px 0;">
