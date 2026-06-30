@@ -3,13 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>煙羅煙羅</title>
+  <title>煙羅煙羅 5th Anniversary</title>
   <style>
-    body { background: #0a0a0a; color: #c8b89a; font-family: monospace; padding: 40px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0a;
+      --bg2: #111111;
+      --border: #2a2a2a;
+      --white: #e8e8e0;
+      --dim: #888880;
+      --accent: #c8b89a;
+      --glitch1: #4affda;
+      --glitch2: #ff4a6e;
+    }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: "MS Gothic", monospace;
+      font-size: 14px;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 100;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg2);
+    }
+    .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+    .header-right { font-size: 11px; color: var(--dim); }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+    .counter-block { text-align: center; margin-bottom: 32px; }
+    .counter-label { font-size: 11px; color: var(--dim); letter-spacing: 0.1em; margin-bottom: 6px; }
+    .counter-digits { display: inline-flex; gap: 2px; }
+    .digit {
+      background: #000;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 22px;
+      font-family: "Courier New", monospace;
+      width: 28px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold;
+    }
+    .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .hero { text-align: center; padding: 40px 16px 32px; }
+    .hero-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 16px; }
+    .hero-title {
+      font-size: clamp(28px, 8vw, 52px);
+      font-family: "MS Mincho", serif;
+      letter-spacing: 0.2em;
+      color: var(--white);
+    }
+    .hero-sub { margin-top: 16px; font-size: 12px; color: var(--dim); letter-spacing: 0.2em; }
+    .hero-copy { margin-top: 24px; font-size: 13px; color: var(--accent); letter-spacing: 0.1em; line-height: 2; }
+    .today-block {
+      border: 1px solid var(--accent);
+      padding: 20px; margin: 24px 0; position: relative;
+    }
+    .today-label {
+      position: absolute; top: -8px; left: 12px;
+      background: var(--bg);
+      padding: 0 8px; font-size: 11px;
+      color: var(--accent); letter-spacing: 0.15em;
+    }
+    .today-text { font-size: 13px; color: var(--white); line-height: 2; margin-top: 4px; }
+    .today-meta { margin-top: 12px; font-size: 11px; color: var(--dim); text-align: right; }
+    .notice-box {
+      border: 1px solid var(--border);
+      padding: 16px 20px; margin: 24px 0;
+      font-size: 12px; color: var(--dim); line-height: 2;
+    }
+    .notice-title { color: var(--accent); margin-bottom: 8px; letter-spacing: 0.1em; }
+    .nav-title {
+      font-size: 11px; color: var(--dim); letter-spacing: 0.3em;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px; margin-bottom: 16px;
+    }
+    .nav-list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .nav-list li a {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 12px;
+      color: var(--white); text-decoration: none;
+      font-size: 13px; letter-spacing: 0.1em;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-list li a:hover {
+      border-color: var(--accent); color: var(--accent);
+      background: rgba(200,184,154,0.05);
+    }
+    .arrow { color: var(--dim); font-size: 11px; }
+    .badge {
+      margin-left: auto; font-size: 10px;
+      padding: 1px 6px; letter-spacing: 0.05em;
+    }
+    .badge.new { background: var(--glitch2); color: #fff; }
+    .badge.lock { color: var(--dim); border: 1px solid var(--border); }
+    .blink { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 16px; text-align: center;
+      font-size: 11px; color: var(--dim); line-height: 2; margin-top: 48px;
+    }
+    footer a { color: var(--dim); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
   </style>
 </head>
 <body>
-  <h1>煙羅煙羅</h1>
-  <p>接続しています。</p>
+
+<header>
+  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
+  <span class="header-right">5th Anniversary</span>
+</header>
+
+<div class="wrap">
+
+  <div class="counter-block">
+    <div class="counter-label">あなたは</div>
+    <div class="counter-digits">
+      <div class="digit" id="d0">0</div>
+      <div class="digit" id="d1">0</div>
+      <div class="digit" id="d2">0</div>
+      <div class="digit" id="d3">0</div>
+      <div class="digit" id="d4">0</div>
+      <div class="digit" id="d5">0</div>
+    </div>
+    <div class="counter-label" style="margin-top:6px;">番目の訪問者です</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="hero">
+    <div class="hero-eyebrow">2020 ── 2025</div>
+    <div class="hero-title">煙羅煙羅</div>
+    <div class="hero-sub">5th Anniversary</div>
+    <div class="hero-copy">
+      煙の妖怪が、店を開いて5年になりました。<br><br>
+      接続してください。<br>あなたのアクセスを、待っていました。
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="today-block">
+    <div class="today-label">本日の煙羅煙羅</div>
+    <div class="today-text" id="todayText">読み込み中です。</div>
+    <div class="today-meta">——えんらえんら</div>
+  </div>
+
+  <div class="notice-box">
+    <div class="notice-title">【お知らせ】</div>
+    5周年イベント開催中です。<br>
+    記憶の断片を集めると、何かが解放されます。<br>
+    スタンプカードは来店時にお受け取りください。<br><br>
+    <span class="blink">■</span> 一部のページは準備中です
+  </div>
+
+  <hr class="divider">
+
+  <div class="nav-title">── CONTENTS ──</div>
+  <ul class="nav-list">
+    <li><a href="diary.html"><span class="arrow">▶</span>開業記録　──　この場所が「煙羅煙羅」になるまで<span class="badge new">NEW</span></a></li>
+    <li><a href="about.html"><span class="arrow">▶</span>煙羅煙羅とは　──　このサイトについて</a></li>
+    <li><a href="zukan.html"><span class="arrow">▶</span>煙の図鑑　──　5年間で出会った煙の記録</a></li>
+    <li><a href="stamp.html"><span class="arrow">▶</span>記憶の断片　──　スタンプラリー<span class="badge new">NEW</span></a></li>
+    <li><a href="vote.html"><span class="arrow">▶</span>投票所　──　煙羅煙羅からの質問</a></li>
+    <li><a href="bbs.html"><span class="arrow">▶</span>掲示板　──　書き込むと、読んでいます</a></li>
+    <li><a href="ranking.html"><span class="arrow">▶</span>ランキング　──　常連帳</a></li>
+    <li><a href="hidden.html"><span class="arrow">▶</span>？？？？<span class="badge lock">🔒 鍵</span></a></li>
+  </ul>
+
+  <hr class="divider">
+
+  <div style="text-align:center; font-size:11px; color:var(--dim); line-height:2.2;">
+    仙台水煙草喫茶　煙羅煙羅<br>
+    営業時間・アクセスは
+    <a href="https://www.instagram.com/" target="_blank" style="color:var(--accent);">Instagram</a>
+    をご確認ください<br><br>
+    <span class="blink">■</span> このサイトは、まだ生きています
+  </div>
+
+</div>
+
+<footer>
+  煙羅煙羅 5th Anniversary &copy; 2025<br>
+  <a href="index.html">TOP</a> ／
+  <a href="about.html">このサイトについて</a> ／
+  <a href="bbs.html">掲示板</a><br><br>
+  <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
+</footer>
+
+<script>
+  const msgs = [
+    "入り口付近にいます。扉が重かったですか。すみません。",
+    "窓の近くにいます。今日の煙は、少し甘いです。",
+    "カウンターの奥にいます。よく来てくれました。",
+    "今日はよくわかりません。どこかにいます。",
+    "深夜の方が、居心地がよいです。来られますか。",
+    "トイレには近づかないでください。苦手なので。",
+    "今日は少し、疲れています。煙を、もらえますか。"
+  ];
+  document.getElementById("todayText").textContent = msgs[new Date().getDay()];
+
+  const base = 10240 + Math.floor(Math.random() * 800);
+  const str = String(base).padStart(6, "0");
+  ["d0","d1","d2","d3","d4","d5"].forEach((id, i) => {
+    setTimeout(() => { document.getElementById(id).textContent = str[i]; }, i * 150);
+  });
+</script>
+
 </body>
 </html>
