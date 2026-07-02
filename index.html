@@ -182,20 +182,24 @@
 
   .sns-row {
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
     margin: 24px 0 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   .sns-banner {
     display: inline-block;
     line-height: 0;
+    flex: 1;
+    max-width: 160px;
   }
   .sns-banner img {
-    height: 220px;
-    width: auto;
+    width: 100%;
+    height: 50px;
+    object-fit: cover;
     display: block;
-    image-rendering: pixelated;
   }
 
   footer {
