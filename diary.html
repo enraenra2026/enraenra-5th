@@ -1,1 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>謎の日記 ─ 煙羅煙羅 5th Anniversary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --border: #2a2a2a;
+    --white: #e8e8e0;
+    --dim: #888880;
+    --accent: #c8b89a;
+  }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+  .header-right { font-size: 11px; color: var(--dim); }
+  .header-right a { color: var(--dim); text-decoration: none; }
+  .header-right a:hover { color: var(--accent); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  .page-head { text-align: center; padding: 32px 16px 24px; }
+  .page-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 12px; }
+  .page-title {
+    font-size: clamp(24px, 6vw, 36px);
+    font-family: "MS Mincho", "ＭＳ 明朝", serif;
+    letter-spacing: 0.2em;
+    color: var(--white);
+  }
+  .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .preface {
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin: 24px 0 32px;
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2.1;
+  }
+  .preface strong { color: var(--accent); font-weight: normal; }
+  .record { border: 1px solid var(--border); margin-bottom: 4px; }
+  .record-head {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .record-num { font-size: 11px; color: var(--accent); letter-spacing: 0.2em; }
+  .record-date { font-size: 11px; color: var(--dim); margin-top: 4px; }
+  .record-body { padding: 20px 18px; }
+  .record-text { font-size: 13.5px; color: var(--white); line-height: 2.1; }
+  .record-text p { margin-bottom: 1.4em; }
+  .record-text p:last-child { margin-bottom: 0; }
+  .photo-frame {
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    background: #000;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .photo-placeholder {
+    font-size: 11px;
+    color: #3a3a36;
+    text-align: center;
+    letter-spacing: 0.1em;
+    line-height: 2;
+  }
+  .photo-caption { font-size: 11px; color: var(--dim); margin-top: 8px; line-height: 1.8; }
+  .intensity { font-size: 10px; color: #444; letter-spacing: 0.15em; margin-top: 6px; }
+  .reply {
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-left: 2px solid var(--accent);
+    background: rgba(200,184,154,0.04);
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2;
+  }
+  .reply-label { color: var(--accent); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .reply-sign { text-align: right; margin-top: 8px; color: #555; font-size: 11px; }
+  .record.locked .record-body { text-align: center; padding: 40px 18px; }
+  .lock-icon { font-size: 20px; color: #333; margin-bottom: 12px; }
+  .locked-text { font-size: 12px; color: #444; letter-spacing: 0.1em; line-height: 2; }
+  .continue-box {
+    text-align: center;
+    padding: 32px 16px;
+    margin-top: 24px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2.2;
+  }
+  .continue-box .accent-line { color: var(--accent); }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 2;
+    margin-top: 48px;
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 480px) {
+    .wrap { padding: 16px 12px 48px; }
+    .record-body { padding: 16px 14px; }
+  }
+</style>
+</head>
+<body>
 
+<header>
+  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
+  <span class="header-right"><a href="index.html">TOP に戻る</a></span>
+</header>
+
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="page-eyebrow">DIARY ── 2021</div>
+    <div class="page-title">謎の日記</div>
+    <div class="page-sub">この場所が「煙羅煙羅」になるまでの記録</div>
+  </div>
+
+  <div class="preface">
+    開業当時、この場所に残されていた記録を、そのまま掲載しています。<br>
+    書いた人間については、わかりません。<br>
+    <strong>——スタッフ一同</strong>
+  </div>
