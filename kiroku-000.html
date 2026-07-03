@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>─</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #050505;
+    color: #c8b89a;
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 2.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+  }
+  .record {
+    max-width: 480px;
+    text-align: center;
+  }
+  .record-num {
+    font-size: 11px;
+    color: #555;
+    letter-spacing: 0.3em;
+    margin-bottom: 8px;
+  }
+  .record-date {
+    font-size: 11px;
+    color: #444;
+    margin-bottom: 48px;
+  }
+  .record-text {
+    font-size: 13.5px;
+    color: #e8e8e0;
+    margin-bottom: 48px;
+  }
+  .divider {
+    color: #333;
+    margin: 40px 0;
+  }
+  .secret {
+    font-size: 12px;
+    color: #6a6a60;
+    line-height: 2.4;
+  }
+  .secret .word {
+    color: #c8b89a;
+    letter-spacing: 0.2em;
+  }
+  .back {
+    margin-top: 56px;
+  }
+  .back a {
+    color: #444;
+    text-decoration: none;
+    font-size: 11px;
+  }
+  .back a:hover { color: #c8b89a; }
+</style>
+</head>
+<body>
+
+<div class="record">
+  <div class="record-num">記録_000</div>
+  <div class="record-date">日付：開店前、ずっと前</div>
+
+  <div class="record-text">
+    ここに煙が来た。<br>
+    よい煙だった。<br>
+    <br>
+    いてもいいか、と思った。<br>
+    誰も答えなかったけれど、<br>
+    扉が開いたから、いることにした。
+  </div>
+
+  <div class="divider">——</div>
+
+  <div class="secret">
+    （このページを見つけたあなたへ）<br>
+    （合言葉は <span class="word">「けむり」</span> です）<br>
+    （お店の人に言うと、断片がひとつ、埋まります）
+  </div>
+
+  <div class="back">
+    <a href="diary.html">もどる</a>
+  </div>
+</div>
+
+</body>
+</html>
