@@ -242,7 +242,7 @@
 
   <nav class="menu-list">
    <a href="about.html" class="menu-row">
-      <img src="ghost.gif" class="menu-gif" alt="プロフィール" style="width:30px; height:30px;">
+      <img src="ghost.gif" class="menu-gif" alt="プロフィール" style="width:30px; height:30px;" id="ghostSecret">
       <div class="menu-text">プロフィール</div>
     </a>
     <a href="event.html" class="menu-row">
@@ -283,10 +283,12 @@
 </footer>
 
 <script>
-  // カウンター5回クリックで裏ページへ
+  // 幽霊GIFを5回タップで裏ページへ
   let knockCount = 0;
   let knockTimer = null;
-  document.querySelector(".counter-led").addEventListener("click", function() {
+  document.getElementById("ghostSecret").addEventListener("click", function(e) {
+    e.preventDefault();
+    e.stopPropagation();
     knockCount++;
     clearTimeout(knockTimer);
     knockTimer = setTimeout(() => { knockCount = 0; }, 3000);
