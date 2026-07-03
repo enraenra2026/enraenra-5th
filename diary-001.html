@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記録_001 ─ 煙羅煙羅 5th Anniversary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --border: #2a2a2a;
+    --white: #e8e8e0;
+    --dim: #888880;
+    --accent: #c8b89a;
+  }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+  .header-right { font-size: 11px; color: var(--dim); }
+  .header-right a { color: var(--dim); text-decoration: none; }
+  .header-right a:hover { color: var(--accent); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  .record-head {
+    text-align: center;
+    padding: 32px 16px 24px;
+  }
+  .record-num { font-size: 12px; color: var(--accent); letter-spacing: 0.2em; }
+  .record-date { font-size: 11px; color: var(--dim); margin-top: 8px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .record-text {
+    font-size: 13.5px;
+    color: var(--white);
+    line-height: 2.2;
+    padding: 0 4px;
+  }
+  .record-text p { margin-bottom: 1.5em; }
+  .record-photo {
+    width: 100%;
+    display: block;
+    margin: 24px 0;
+    border: 1px solid var(--border);
+  }
+  .photo-caption {
+    font-size: 11px;
+    color: var(--dim);
+    margin-top: -12px;
+    margin-bottom: 24px;
+    line-height: 1.8;
+  }
+  .reply {
+    margin-top: 32px;
+    padding: 16px 18px;
+    border-left: 2px solid var(--accent);
+    background: rgba(200,184,154,0.04);
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2;
+  }
+  .reply-label { color: var(--accent); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .reply-sign { text-align: right; margin-top: 8px; color: #555; font-size: 11px; }
+  .nav-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    font-size: 12px;
+  }
+  .nav-bottom a {
+    color: var(--accent);
+    text-decoration: none;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+  }
+  .nav-bottom a:hover { border-color: var(--accent); }
+  .nav-bottom .disabled {
+    color: #444;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+  }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 2;
+    margin-top: 48px;
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
+  <span class="header-right"><a href="diary.html">記録一覧に戻る</a></span>
+</header>
+
+<div class="wrap">
+
+  <div class="record-head">
+    <div class="record-num">── 記録_001 ──</div>
+    <div class="record-date">2021/3/23　物件見学</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="record-text">
+    <p>はじめてこの場所に入った日のことを書いておく。</p>
+    <p>以前は事務所だったらしい。スケルトン状態とのことだったが、実際に入ってみたら、椅子があったり、配線が垂れ下がっていたりはした。でもまあ、ほとんど何もない状態だった。</p>
+    <p>壁だけ、白いパネルに覆われていた。</p>
+    <p>白い壁と、天井から垂れる配線。きれいでも、汚くもない。ただ、中途半端に終わった場所、という感じがした。</p>
+    <p>煙の匂いはしなかった。まだ、何もいない場所だった。</p>
+  </div>
+
+  <img src="diary-001-1.jpg" alt="物件見学時の写真1" class="record-photo">
+  <img src="diary-001-2.jpg" alt="物件見学時の写真2" class="record-photo">
+  <div class="photo-caption">2021/3/23　物件見学時。白いパネルに覆われた壁、天井から垂れる配線。</div>
+
+  <div class="reply">
+    <div class="reply-label">💬 スタッフより</div>
+    本当にこんな感じだった。何もないからか広く感じて。「ここが本当にあの店になるの？」って、全員が思ってたと思う。
+    <div class="reply-sign">——スタッフB</div>
+  </div>
+
+  <div class="nav-bottom">
+    <a href="diary.html">← 記録一覧</a>
+    <span class="disabled">記録_002 →（未公開）</span>
+  </div>
+
+</div>
+
+<footer>
+  煙羅煙羅 5th Anniversary &copy; 2025<br>
+  <a href="index.html">TOP</a> ／
+  <a href="diary.html">謎の日記</a><br><br>
+  <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
+</footer>
+
+</body>
+</html>
