@@ -283,21 +283,7 @@
 </footer>
 
 <script>
-  // 幽霊GIFを5回タップで裏ページへ
-  let knockCount = 0;
-  let knockTimer = null;
-  document.getElementById("ghostSecret").addEventListener("click", function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    knockCount++;
-    clearTimeout(knockTimer);
-    knockTimer = setTimeout(() => { knockCount = 0; }, 3000);
-    if (knockCount >= 5) {
-      knockCount = 0;
-      window.location.href = "ura.html";
-    }
-  });
+  // 隠し要素はプロフィールページに移動
 </script>
-
 </body>
 </html>
