@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>─</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #050505;
+    color: #e8e8e0;
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 2.4;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+  }
+  .box { max-width: 480px; }
+  .title {
+    font-size: 13px;
+    color: #c8b89a;
+    letter-spacing: 0.2em;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .diary-line {
+    font-size: 13px;
+    color: #e8e8e0;
+    margin-bottom: 16px;
+    line-height: 2.1;
+  }
+  .gift {
+    margin-top: 48px;
+    padding: 20px;
+    border: 1px dashed #333;
+    text-align: center;
+    font-size: 12px;
+    color: #6a6a60;
+    line-height: 2.2;
+  }
+  .gift a {
+    display: inline-block;
+    margin-top: 12px;
+    color: #c8b89a;
+    text-decoration: none;
+    border: 1px solid #c8b89a;
+    padding: 8px 24px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .gift a:hover {
+    background: #c8b89a;
+    color: #050505;
+  }
+  .back {
+    margin-top: 48px;
+    text-align: center;
+  }
+  .back a {
+    color: #444;
+    text-decoration: none;
+    font-size: 11px;
+  }
+  .back a:hover { color: #c8b89a; }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <div class="title">きょうのえんらえんら</div>
+
+  <div class="diary-line">・雨。煙が重い日。</div>
+  <div class="diary-line">・新しい香りが届いた。甘い。気に入った。</div>
+  <div class="diary-line">・深夜、誰もいない店で、少しだけ大きくなってみた。</div>
+  <div class="diary-line">・トイレの扉を、また閉めてしまった。癖なので。</div>
+
+  <div class="gift">
+    （ここまで来た人へ）<br>
+    （壁紙を、あげます。ないしょです。）<br>
+    <a href="kabegami-ura.png" download>▼ もらう</a>
+  </div>
+
+  <div class="back">
+    <a href="index.html">もどる</a>
+  </div>
+</div>
+
+</body>
+</html>
