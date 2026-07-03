@@ -68,44 +68,46 @@
     line-height: 2.1;
   }
   .preface strong { color: var(--accent); font-weight: normal; }
-  .record { border: 1px solid var(--border); margin-bottom: 4px; }
-  .record-head {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg2);
+  .record-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
-  .record-num { font-size: 11px; color: var(--accent); letter-spacing: 0.2em; }
-  .record-date { font-size: 11px; color: var(--dim); margin-top: 4px; }
-  .record-body { padding: 20px 18px; }
-  .record-text { font-size: 13.5px; color: var(--white); line-height: 2.1; }
-  .record-text p { margin-bottom: 1.4em; }
-  .record-text p:last-child { margin-bottom: 0; }
-  .photo-caption { font-size: 11px; color: var(--dim); margin-top: 8px; line-height: 1.8; }
-  .intensity { font-size: 10px; color: #444; letter-spacing: 0.15em; margin-top: 6px; }
-  .reply {
-    margin-top: 20px;
-    padding: 14px 16px;
-    border-left: 2px solid var(--accent);
-    background: rgba(200,184,154,0.04);
-    font-size: 12px;
-    color: var(--dim);
-    line-height: 2;
-  }
-  .reply-label { color: var(--accent); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 6px; }
-  .reply-sign { text-align: right; margin-top: 8px; color: #555; font-size: 11px; }
-  .record.locked .record-body { text-align: center; padding: 40px 18px; }
-  .lock-icon { font-size: 20px; color: #333; margin-bottom: 12px; }
-  .locked-text { font-size: 12px; color: #444; letter-spacing: 0.1em; line-height: 2; }
-  .continue-box {
-    text-align: center;
-    padding: 32px 16px;
-    margin-top: 24px;
+  .record-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
     border: 1px solid var(--border);
-    font-size: 12px;
-    color: var(--dim);
-    line-height: 2.2;
+    text-decoration: none;
+    transition: all 0.15s;
   }
-  .continue-box .accent-line { color: var(--accent); }
+  .record-item:hover {
+    border-color: var(--accent);
+    background: rgba(200,184,154,0.04);
+  }
+  .record-item .num {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+  }
+  .record-item .title {
+    font-size: 13px;
+    color: var(--white);
+  }
+  .record-item .date {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--dim);
+    flex-shrink: 0;
+  }
+  .record-item.locked {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .record-item.locked .title { color: #555; }
+  .record-item .lock { font-size: 13px; flex-shrink: 0; }
   footer {
     border-top: 1px solid var(--border);
     padding: 24px 16px;
@@ -117,10 +119,6 @@
   }
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
-  @media (max-width: 480px) {
-    .wrap { padding: 16px 12px 48px; }
-    .record-body { padding: 16px 14px; }
-  }
 </style>
 </head>
 <body>
@@ -146,54 +144,26 @@
 
   <hr class="divider">
 
-  <!-- 記録_001 -->
-  <div class="record">
-    <div class="record-head">
-      <div class="record-num">記録_001</div>
-      <div class="record-date">2021/3/23　物件見学</div>
+  <div class="record-list">
+
+    <a href="diary-001.html" class="record-item">
+      <span class="num">記録_001</span>
+      <span class="title">はじめてこの場所に入った日</span>
+      <span class="date">2021/3/23</span>
+    </a>
+
+    <div class="record-item locked">
+      <span class="num">記録_002</span>
+      <span class="lock">🔒</span>
+      <span class="title">この記録は、まだ公開されていません</span>
     </div>
-    <div class="record-body">
-      <div class="record-text">
-        <p>はじめてこの場所に入った日のことを書いておく。</p>
-        <p>以前は事務所だったらしい。スケルトン状態とのことだったが、実際に入ってみたら、椅子があったり、配線が垂れ下がっていたりはした。でもまあ、ほとんど何もない状態だった。</p>
-        <p>壁だけ、白いパネルに覆われていた。</p>
-        <p>白い壁と、天井から垂れる配線。きれいでも、汚くもない。ただ、中途半端に終わった場所、という感じがした。</p>
-        <p>煙の匂いはしなかった。まだ、何もいない場所だった。</p>
-      </div>
 
-      <img src="diary-001-1.jpg" alt="物件見学時の写真1" style="width:100%; display:block; margin:20px 0;">
-      <img src="diary-001-2.jpg" alt="物件見学時の写真2" style="width:100%; display:block; margin:20px 0;">
-      <div class="photo-caption">2021/3/23　物件見学時。白いパネルに覆われた壁、天井から垂れる配線。</div>
-      <div class="intensity">映り込み強度 ★☆☆☆☆</div>
-
-      <div class="reply">
-        <div class="reply-label">💬 スタッフより</div>
-        本当にこんな感じだった。何もないからか広く感じて。「ここが本当にあの店になるの？」って、全員が思ってたと思う。
-        <div class="reply-sign">——スタッフB</div>
-      </div>
+    <div class="record-item locked">
+      <span class="num">記録_003</span>
+      <span class="lock">🔒</span>
+      <span class="title">この記録は、まだ公開されていません</span>
     </div>
-  </div>
 
-  <!-- 記録_002以降は追加予定 -->
-  <div class="record locked">
-    <div class="record-head">
-      <div class="record-num">記録_002</div>
-      <div class="record-date">続きは近日公開</div>
-    </div>
-    <div class="record-body">
-      <div class="lock-icon">🔒</div>
-      <div class="locked-text">
-        この記録は、まだ公開されていません。<br>
-        続きをお待ちください。
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
-  <div class="continue-box">
-    記録は順次公開されます。<br><br>
-    <span class="accent-line">——煙羅煙羅</span>
   </div>
 
 </div>
