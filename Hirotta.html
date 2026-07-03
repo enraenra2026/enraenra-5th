@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>─</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #050505;
+    color: #e8e8e0;
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 2.4;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px
+    );
+    pointer-events: none;
+  }
+  .box {
+    max-width: 520px;
+  }
+  .title {
+    font-size: 13px;
+    color: #c8b89a;
+    letter-spacing: 0.2em;
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  .item {
+    font-size: 13px;
+    color: #e8e8e0;
+    margin-bottom: 20px;
+    line-height: 2.1;
+  }
+  .item .note {
+    font-size: 12px;
+    color: #6a6a60;
+  }
+  .sign {
+    text-align: right;
+    margin-top: 40px;
+    font-size: 12px;
+    color: #888880;
+  }
+  .back {
+    margin-top: 48px;
+    text-align: center;
+  }
+  .back a {
+    color: #444;
+    text-decoration: none;
+    font-size: 11px;
+  }
+  .back a:hover { color: #c8b89a; }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <div class="title">【拾ったもの】</div>
+
+  <div class="item">
+    ・黄色いメジャー<br>
+    <span class="note">（2021年春に拾得。返したつもりが、見つからない。すみません。）</span>
+  </div>
+
+  <div class="item">
+    ・銀色のハサミ<br>
+    <span class="note">（棚の上に返しました）</span>
+  </div>
+
+  <div class="item">
+    ・いい煙の出る葉っぱ<br>
+    <span class="note">（みんながおいしいって言ってました。返しません。）</span>
+  </div>
+
+  <div class="item">
+    ・言葉<br>
+    <span class="note">（お客さんが置いていった悩みごと。これは、返しません。）</span>
+  </div>
+
+  <div class="sign">——えんらえんら</div>
+
+  <div class="back">
+    <a href="index.html">もどる</a>
+  </div>
+</div>
+
+</body>
+</html>
