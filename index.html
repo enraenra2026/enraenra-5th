@@ -231,7 +231,7 @@
   <div class="counter-area">
     <div class="counter-label">あなたは</div>
     <div class="counter-led">
-      <span class="counter-digits" id="counterNum">000000</span>
+      <!-- SEKKAKU-COOUNT ここから --><script src="//scnt.sekkaku.net/cnt.js?ins=1783072364&amp;id=S1783070431&amp;mode=all&amp;color=00ff66&amp;size=14&amp;check=DAY"></script><span id="scntins1783072364" class="counter-digits"></span><!-- SEKKAKU-COOUNT ここまで -->
     </div>
     <div class="counter-label2">人目の訪問者です</div>
   </div>
@@ -283,9 +283,7 @@
 </footer>
 
 <script>
-  let count = parseInt(localStorage.getItem("enraCounter") || "665") + 1;
-  localStorage.setItem("enraCounter", count);
-  document.getElementById("counterNum").textContent = String(count).padStart(6, "0");
+  // カウンターはせっかくカウンターに移行済み
 </script>
 
 </body>
