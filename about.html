@@ -223,6 +223,20 @@
   <a href="diary.html">謎の日記</a><br><br>
   <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
 </footer>
-
+<script>
+  // 幽霊GIFを5回タップで裏ページへ
+  let knockCount = 0;
+  let knockTimer = null;
+  document.getElementById("ghostSecret").addEventListener("click", function() {
+    knockCount++;
+    clearTimeout(knockTimer);
+    knockTimer = setTimeout(() => { knockCount = 0; }, 3000);
+    if (knockCount >= 5) {
+      knockCount = 0;
+      window.location.href = "ura.html";
+    }
+  });
+</script>
+</body>
 </body>
 </html>
