@@ -283,7 +283,18 @@
 </footer>
 
 <script>
-  // カウンターはせっかくカウンターに移行済み
+  // カウンター5回クリックで裏ページへ
+  let knockCount = 0;
+  let knockTimer = null;
+  document.querySelector(".counter-led").addEventListener("click", function() {
+    knockCount++;
+    clearTimeout(knockTimer);
+    knockTimer = setTimeout(() => { knockCount = 0; }, 3000);
+    if (knockCount >= 5) {
+      knockCount = 0;
+      window.location.href = "ura.html";
+    }
+  });
 </script>
 
 </body>
