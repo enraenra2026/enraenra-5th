@@ -43,3 +43,115 @@
     position: sticky;
     top: 0;
     z-index: 50;
+  }
+  .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+  .header-right { font-size: 11px; color: var(--dim); }
+  .header-right a { color: var(--dim); text-decoration: none; }
+  .header-right a:hover { color: var(--accent); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  .page-head { text-align: center; padding: 32px 16px 24px; }
+  .page-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 12px; }
+  .page-title {
+    font-size: clamp(24px, 6vw, 36px);
+    font-family: "MS Mincho", serif;
+    letter-spacing: 0.2em;
+    color: var(--white);
+  }
+  .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .notice {
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin: 24px 0;
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2.1;
+  }
+  .notice-title {
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.1em;
+  }
+  .bbs-link-box {
+    text-align: center;
+    padding: 40px 20px;
+    border: 1px solid var(--accent);
+    margin: 32px 0;
+  }
+  .bbs-link-box a {
+    display: inline-block;
+    background: var(--bg2);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 14px 40px;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    transition: all 0.15s;
+  }
+  .bbs-link-box a:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .bbs-sub {
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--dim);
+  }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 2;
+    margin-top: 48px;
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
+  <span class="header-right"><a href="index.html">TOP に戻る</a></span>
+</header>
+
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="page-eyebrow">BBS</div>
+    <div class="page-title">電子掲示板</div>
+    <div class="page-sub">書き込むと、読んでいます</div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="notice">
+    <div class="notice-title">【掲示板のやくそく】</div>
+    ・キリ番を踏んだら、報告してください。<br>
+    ・感想、ひとこと、なんでも歓迎です。<br>
+    ・けんかは、しないでください。<br>
+    ・書き込みは、読んでいます。返信することも、あります。<br>
+    <br>
+    ——えんらえんら
+  </div>
+
+  <div class="bbs-link-box">
+    <a href="https://z-z.jp/?enraenra5th" target="_blank">▶ 掲示板に入る</a>
+    <div class="bbs-sub">※外部サイト（Z-Z BOARD）が開きます</div>
+  </div>
+
+</div>
+
+<footer>
+  煙羅煙羅 5th Anniversary &copy; 2025<br>
+  <a href="index.html">TOP</a> ／
+  <a href="diary.html">謎の日記</a> ／
+  <a href="about.html">プロフィール</a><br><br>
+  <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
+</footer>
+
+</body>
+</html>
