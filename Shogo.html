@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>称号の間 ─ 煙羅煙羅 5th Anniversary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --border: #2a2a2a;
+    --white: #e8e8e0;
+    --dim: #888880;
+    --accent: #c8b89a;
+    --gold: #d4af37;
+  }
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg, transparent, transparent 2px,
+      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bg2);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+  .header-right { font-size: 11px; color: var(--dim); }
+  .header-right a { color: var(--dim); text-decoration: none; }
+  .header-right a:hover { color: var(--accent); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  .page-head { text-align: center; padding: 32px 16px 24px; }
+  .page-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 12px; }
+  .page-title {
+    font-size: clamp(24px, 6vw, 36px);
+    font-family: "MS Mincho", serif;
+    letter-spacing: 0.2em;
+    color: var(--white);
+  }
+  .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .rule-box {
+    border: 1px solid var(--border);
+    padding: 20px;
+    margin: 24px 0 32px;
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2.2;
+  }
+  .rule-title { color: var(--accent); margin-bottom: 10px; letter-spacing: 0.1em; }
+  .shogo-list { display: flex; flex-direction: column; gap: 4px; }
+  .shogo-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border: 1px solid var(--border);
+  }
+  .shogo-item .num {
+    font-family: "Courier New", monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    width: 60px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .shogo-item .name {
+    font-size: 13px;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+  .shogo-item .holder {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--dim);
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .shogo-item .holder.empty { color: #444; }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 2;
+    margin-top: 48px;
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 480px) {
+    .shogo-item { flex-wrap: wrap; gap: 8px; padding: 14px; }
+    .shogo-item .holder { width: 100%; text-align: right; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
+  <span class="header-right"><a href="index.html">TOP に戻る</a></span>
+</header>
+
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="page-eyebrow">TITLE HOLDERS</div>
+    <div class="page-title">称号の間</div>
+    <div class="page-sub">キリ番を踏みし者たちの記録</div>
+  </div>
+
+  <div class="rule-box">
+    <div class="rule-title">【キリ番を踏んだら】</div>
+    ①カウンターの画面をスクリーンショット<br>
+    ②<a href="bbs.html" style="color:var(--accent);">BBS</a>に「番号＋お名前（ハンドルネームOK）」でカキコ<br>
+    ③確認後、この間にお名前と称号を刻みます<br>
+    <br>
+    ※踏み逃げ禁止！<br>
+    ——えんらえんら
+  </div>
+
+  <hr class="divider">
+
+  <div class="shogo-list">
+
+    <div class="shogo-item">
+      <span class="num">001</span>
+      <span class="name">最初の人間</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">100</span>
+      <span class="name">百人目の来訪者</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">111</span>
+      <span class="name">煙の一番弟子</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">222</span>
+      <span class="name">二種林檎を吸う者</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">333</span>
+      <span class="name">三度目の正直</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">444</span>
+      <span class="name">死番の生還者</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">555</span>
+      <span class="name">五煙を結ぶ者</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">666</span>
+      <span class="name">悪魔の煙</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">777</span>
+      <span class="name">煙の幸運児</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">888</span>
+      <span class="name">末広がりの煙</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">999</span>
+      <span class="name">千に届かぬ者</span>
+      <span class="holder empty">──</span>
+    </div>
+
+    <div class="shogo-item">
+      <span class="num">1000</span>
+      <span class="name">千の煙の証人</span>
+      <span class="holder empty">──</span>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  煙羅煙羅 5th Anniversary &copy; 2025<br>
+  <a href="index.html">TOP</a> ／
+  <a href="bbs.html">掲示板</a> ／
+  <a href="event.html">5周年記念企画</a><br><br>
+  <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
+</footer>
+
+</body>
+</html>
