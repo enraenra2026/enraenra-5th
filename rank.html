@@ -3,172 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>煙幕スコアランキング - 煙羅煙羅5周年</title>
+<title>煙幕スコアランキング ─ 煙羅煙羅 5th Anniversary</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    font-family: "MS PGothic", "Osaka", monospace;
-    padding: 24px 12px;
-  }
-  .enra-rank-page {
-    width: 100%;
-    max-width: 480px;
-  }
-  .enra-rank-back {
-    display: inline-block;
-    margin-bottom: 12px;
-    color: #b8a8e8;
-    font-size: 12px;
-    text-decoration: none;
-    letter-spacing: 1px;
-  }
-  .enra-rank-back:hover { text-decoration: underline; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .enra-rank-board {
-    border: 3px solid #8a8a6a;
-    box-shadow: inset 0 0 0 2px #2a2a1a, 0 0 0 4px #000;
-    background: #d8d4b8;
-    padding: 8px;
+  :root {
+    --tile-line: #5a1414;
+    --gold: #d4af37;
+    --green-led: #00ff66;
+    --white: #e8e0d8;
+    --dim: #8a7a70;
   }
-  .enra-rank-titlebar {
-    background: linear-gradient(to bottom, #6a6a8a 0%, #3a3a5a 100%);
-    color: #fff;
+
+  body {
+    background-color: #060000;
+    background-image:
+      repeating-linear-gradient(0deg, var(--tile-line) 0px, var(--tile-line) 1px, transparent 1px, transparent 86px),
+      repeating-linear-gradient(90deg, var(--tile-line) 0px, var(--tile-line) 1px, transparent 1px, transparent 86px);
+    color: var(--white);
+    font-family: "MS Gothic", "ＭＳ ゴシック", sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .tile-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.6;
+    background-image: url("tile-bg.png");
+    background-repeat: repeat;
+    background-size: 320px auto;
+    filter: saturate(1.8);
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 14px 10px 40px;
+  }
+
+  .back-link {
+    display: inline-block;
     font-size: 12px;
-    padding: 3px 8px;
-    margin-bottom: 6px;
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: space-between;
+    color: var(--dim);
+    text-decoration: none;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
   }
-  .enra-rank-blink { animation: enra-rank-blink 1s steps(2) infinite; }
-  @keyframes enra-rank-blink { 50% { opacity: 0; } }
-  .enra-rank-body {
-    border: 2px inset #888;
-    background: #04040a;
-    color: #d8d4b8;
-    padding: 20px 16px;
-  }
-  .enra-rank-heading {
-    font-size: 16px;
-    color: #b8a8e8;
-    letter-spacing: 2px;
+  .back-link:hover { color: var(--gold); }
+
+  .banner {
     text-align: center;
-    margin-bottom: 4px;
+    padding: 6px 8px 10px;
   }
-  .enra-rank-sub {
-    font-size: 10px;
-    color: #888;
-    text-align: center;
-    margin-bottom: 16px;
-    line-height: 1.7;
+  .banner-sub {
+    display: inline-block;
+    background: linear-gradient(180deg, #d41818, #7a0606);
+    border: 2px solid #ffb84d;
+    color: #ffe9b0;
+    font-size: 12px;
+    padding: 3px 16px;
+    letter-spacing: 0.15em;
+    border-radius: 2px;
+    text-shadow: 1px 1px 0 #000;
+    margin-bottom: 8px;
   }
-  .enra-rank-loading {
+  .banner-title {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+    margin: 4px 0;
+    background: linear-gradient(180deg, #fff6cf 0%, #e8c34a 35%, #b8860b 60%, #8a5a00 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
+  }
+  .banner-desc {
     font-size: 11px;
-    color: #888;
-    text-align: center;
-    padding: 20px 0;
+    color: var(--dim);
+    line-height: 1.8;
+    margin-top: 6px;
   }
-  .enra-rank-row {
+
+  .rank-panel {
+    margin-top: 16px;
+    background: rgba(10,0,0,0.7);
+    border: 2px solid #6a2020;
+    border-radius: 3px;
+    padding: 16px 14px;
+  }
+
+  .rank-loading, .rank-empty {
+    text-align: center;
+    font-size: 12px;
+    color: var(--dim);
+    padding: 24px 0;
+  }
+
+  .rank-row {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
+    padding: 9px 4px;
+    border-bottom: 1px dashed #4a2020;
     font-size: 13px;
-    padding: 8px 4px;
-    border-bottom: 1px dotted #444;
   }
-  .enra-rank-row.enra-rank-top1 { color: #f0d878; font-size: 15px; }
-  .enra-rank-row.enra-rank-top2 { color: #dcdcdc; font-size: 14px; }
-  .enra-rank-row.enra-rank-top3 { color: #d4a06a; font-size: 14px; }
-  .enra-rank-pos {
+  .rank-row:last-child { border-bottom: none; }
+  .rank-row.top1 { color: #ffe9b0; font-size: 16px; }
+  .rank-row.top2 { color: #e8dcc8; font-size: 14.5px; }
+  .rank-row.top3 { color: #d9a86a; font-size: 14px; }
+
+  .rank-pos {
     width: 26px;
     text-align: right;
     flex-shrink: 0;
+    color: #d41818;
   }
-  .enra-rank-name {
+  .rank-row.top1 .rank-pos,
+  .rank-row.top2 .rank-pos,
+  .rank-row.top3 .rank-pos { color: inherit; }
+
+  .rank-name {
     flex: 1;
-    text-align: left;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .enra-rank-char {
+  .rank-char {
     font-size: 9px;
-    color: #888;
+    color: var(--dim);
     flex-shrink: 0;
   }
-  .enra-rank-score {
-    width: 64px;
+  .rank-score {
+    width: 62px;
     text-align: right;
     flex-shrink: 0;
-    color: #9ac8a8;
+    color: var(--green-led);
+    font-family: "Courier New", monospace;
+    text-shadow: 0 0 4px rgba(0,255,102,0.5);
   }
-  .enra-rank-reload-btn {
+
+  .reload-btn {
     display: block;
     margin: 18px auto 0;
-    background: #3a3a5a;
-    color: #d8d4b8;
-    border: 2px outset #8a8a9a;
+    background: linear-gradient(180deg, #9c1414, #5c0808);
+    color: #ffe9b0;
+    border: 1px solid #ff6b6b;
     font-size: 12px;
-    padding: 7px 20px;
+    padding: 8px 22px;
     font-family: inherit;
     cursor: pointer;
-    letter-spacing: 1px;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
   }
-  .enra-rank-reload-btn:active { border-style: inset; }
-  .enra-rank-empty {
-    font-size: 11px;
-    color: #888;
-    text-align: center;
-    padding: 20px 0;
-  }
-  .enra-rank-play-link {
+  .reload-btn:active { transform: translateY(1px); }
+
+  .play-link {
     display: block;
     text-align: center;
-    margin-top: 16px;
-    font-size: 11px;
+    margin-top: 22px;
   }
-  .enra-rank-play-link a {
-    color: #9ac8a8;
+  .play-link a {
+    display: inline-block;
+    background: linear-gradient(180deg, #9c1414, #5c0808);
+    color: #ffe9b0;
+    border: 1px solid #ff6b6b;
+    font-size: 13px;
+    padding: 10px 28px;
+    letter-spacing: 0.1em;
+    border-radius: 2px;
     text-decoration: none;
   }
-  .enra-rank-play-link a:hover { text-decoration: underline; }
+  .play-link a:hover { background: linear-gradient(180deg, #b41818, #7c0a0a); }
+  .play-link a:active { transform: translateY(1px); }
+
+  footer {
+    text-align: center;
+    font-size: 10px;
+    color: #6a5a50;
+    padding: 30px 10px 10px;
+    line-height: 2;
+  }
+  footer a { color: #8a7a70; text-decoration: none; }
+
+  @media (max-width: 480px) {
+    .banner-title { font-size: 21px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="enra-rank-page">
-  <a href="index.html" class="enra-rank-back">&laquo; プロフィールへ戻る</a>
+<div class="tile-bg"></div>
 
-  <div class="enra-rank-board">
-    <div class="enra-rank-titlebar">
-      <span>ENRA_RANKING.EXE</span>
-      <span class="enra-rank-blink">■</span>
-    </div>
-    <div class="enra-rank-body">
-      <h1 class="enra-rank-heading">煙幕スコアランキング</h1>
-      <div class="enra-rank-sub">「煙羅煙羅の煙幕」ハイスコア上位10名<br>店の奥から漂う煙を、誰が最も追い払ったか。</div>
-      <div id="enra-rank-list" class="enra-rank-list">
-        <div class="enra-rank-loading">読み込み中...</div>
-      </div>
-      <button id="enra-rank-reload" class="enra-rank-reload-btn">更新する</button>
-      <div class="enra-rank-play-link">
-        <a href="enra-danmaku.html">→ 煙幕シューティングをプレイする</a>
-      </div>
-    </div>
+<div class="wrap">
+
+  <a href="index.html" class="back-link">&laquo; TOPへ戻る</a>
+
+  <div class="banner">
+    <div class="banner-sub">SCORE ATTACK</div>
+    <div class="banner-title">煙幕スコアランキング</div>
+    <div class="banner-desc">「煙羅煙羅の煙幕」ハイスコア 上位10名<br>店の奥から漂う煙を、誰が最も追い払ったか。</div>
   </div>
+
+  <div class="rank-panel">
+    <div id="rank-list">
+      <div class="rank-loading">読み込み中...</div>
+    </div>
+    <button id="rank-reload" class="reload-btn">更新する</button>
+  </div>
+
+  <div class="play-link">
+    <a href="enra-danmaku.html">煙幕シューティングで遊ぶ</a>
+  </div>
+
 </div>
+
+<footer>
+  仙台水煙草喫茶　煙羅煙羅 5th Anniversary &copy; 2025<br>
+  <a href="index.html">TOP</a> ／
+  <a href="bbs.html">掲示板</a> ／
+  <a href="diary.html">謎の日記</a>
+</footer>
 
 <script>
 (function(){
   const RANKING_API_URL = 'https://script.google.com/macros/s/AKfycbzuYHcElDrOh7s12iBffLcovUZIp6HLL-Wmt-n2g7rroGaiAI0aFnFcS2cM9FKn1uSi1g/exec';
 
-  const listEl = document.getElementById('enra-rank-list');
-  const reloadBtn = document.getElementById('enra-rank-reload');
+  const listEl = document.getElementById('rank-list');
+  const reloadBtn = document.getElementById('rank-reload');
 
   function escapeHtml(s) {
     return String(s == null ? '' : s)
@@ -180,17 +247,17 @@
 
   function renderList(list) {
     if (!list || list.length === 0) {
-      listEl.innerHTML = '<div class="enra-rank-empty">まだランキングがありません</div>';
+      listEl.innerHTML = '<div class="rank-empty">まだランキングがありません</div>';
       return;
     }
     const rows = list.slice(0, 10).map((r, i) => {
-      const topClass = i === 0 ? 'enra-rank-top1' : (i === 1 ? 'enra-rank-top2' : (i === 2 ? 'enra-rank-top3' : ''));
+      const topClass = i === 0 ? 'top1' : (i === 1 ? 'top2' : (i === 2 ? 'top3' : ''));
       return `
-        <div class="enra-rank-row ${topClass}">
-          <span class="enra-rank-pos">${i+1}</span>
-          <span class="enra-rank-name">${escapeHtml(r.name)}</span>
-          <span class="enra-rank-char">${escapeHtml(r.character || '')}</span>
-          <span class="enra-rank-score">${r.score}</span>
+        <div class="rank-row ${topClass}">
+          <span class="rank-pos">${i+1}</span>
+          <span class="rank-name">${escapeHtml(r.name)}</span>
+          <span class="rank-char">${escapeHtml(r.character || '')}</span>
+          <span class="rank-score">${r.score}</span>
         </div>
       `;
     }).join('');
@@ -198,12 +265,12 @@
   }
 
   function loadRanking() {
-    listEl.innerHTML = '<div class="enra-rank-loading">読み込み中...</div>';
+    listEl.innerHTML = '<div class="rank-loading">読み込み中...</div>';
     fetch(RANKING_API_URL + '?action=ranking')
       .then(r => r.json())
       .then(data => renderList(data))
       .catch(() => {
-        listEl.innerHTML = '<div class="enra-rank-empty">読み込みに失敗しました</div>';
+        listEl.innerHTML = '<div class="rank-empty">読み込みに失敗しました</div>';
       });
   }
 
