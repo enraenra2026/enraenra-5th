@@ -25,16 +25,13 @@
     line-height: 1.8;
     min-height: 100vh;
   }
-  body::before {
+ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 2px,
-      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
-    );
+    background: rgba(0,0,0,0.6);
     pointer-events: none;
-    z-index: 100;
+    z-index: 0;
   }
   header {
     border-bottom: 1px solid var(--border);
