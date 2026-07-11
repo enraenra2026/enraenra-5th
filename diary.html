@@ -7,51 +7,47 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0a0a0a;
-    --bg2: #111111;
-    --border: #2a2a2a;
+    --border: #3a3a3a;
     --white: #e8e8e0;
-    --dim: #888880;
-    --accent: #c8b89a;
+    --dim: #b0a89c;
+    --accent: #e0d0a8;
   }
   body {
     background-color: #050505;
     background-image: url("bg-sub.png");
     background-repeat: repeat;
-    background-size: 400px auto;
+    background-size: 380px auto;
     color: var(--white);
     font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
     font-size: 14px;
     line-height: 1.8;
     min-height: 100vh;
   }
+  /* 背景を暗くするオーバーレイ */
   body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 2px,
-      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
-    );
+    background: rgba(0,0,0,0.6);
     pointer-events: none;
-    z-index: 100;
+    z-index: 0;
   }
   header {
+    position: relative;
+    z-index: 2;
     border-bottom: 1px solid var(--border);
     padding: 8px 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg2);
+    background: rgba(10,10,10,0.9);
     position: sticky;
     top: 0;
-    z-index: 50;
   }
   .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
-  .header-right { font-size: 11px; color: var(--dim); }
-  .header-right a { color: var(--dim); text-decoration: none; }
+  .header-right a { color: var(--dim); text-decoration: none; font-size: 11px; }
   .header-right a:hover { color: var(--accent); }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
   .page-head { text-align: center; padding: 32px 16px 24px; }
   .page-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 12px; }
   .page-title {
@@ -59,59 +55,47 @@
     font-family: "MS Mincho", serif;
     letter-spacing: 0.2em;
     color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
   }
   .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
   .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-  .preface {
+  /* 半透明黒パネル */
+  .panel {
+    background: rgba(8,8,8,0.82);
     border: 1px solid var(--border);
     padding: 20px;
-    margin: 24px 0 32px;
+    margin-bottom: 24px;
+  }
+  .preface {
     font-size: 12px;
     color: var(--dim);
     line-height: 2.1;
   }
   .preface strong { color: var(--accent); font-weight: normal; }
-  .record-list {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  .record-list { display: flex; flex-direction: column; gap: 8px; }
   .record-item {
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 16px 18px;
+    background: rgba(8,8,8,0.82);
     border: 1px solid var(--border);
     text-decoration: none;
     transition: all 0.15s;
   }
   .record-item:hover {
     border-color: var(--accent);
-    background: rgba(200,184,154,0.04);
+    background: rgba(30,26,18,0.85);
   }
-  .record-item .num {
-    font-size: 11px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-    flex-shrink: 0;
-  }
-  .record-item .title {
-    font-size: 13px;
-    color: var(--white);
-  }
-  .record-item .date {
-    margin-left: auto;
-    font-size: 11px;
-    color: var(--dim);
-    flex-shrink: 0;
-  }
-  .record-item.locked {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .record-item.locked .title { color: #555; }
+  .record-item .num { font-size: 11px; color: var(--accent); letter-spacing: 0.15em; flex-shrink: 0; }
+  .record-item .title { font-size: 13px; color: var(--white); }
+  .record-item .date { margin-left: auto; font-size: 11px; color: var(--dim); flex-shrink: 0; }
+  .record-item.locked { opacity: 0.5; pointer-events: none; }
+  .record-item.locked .title { color: #666; }
   .record-item .lock { font-size: 13px; flex-shrink: 0; }
   footer {
+    position: relative;
+    z-index: 1;
     border-top: 1px solid var(--border);
     padding: 24px 16px;
     text-align: center;
@@ -119,6 +103,7 @@
     color: var(--dim);
     line-height: 2;
     margin-top: 48px;
+    background: rgba(10,10,10,0.85);
   }
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
@@ -139,7 +124,7 @@
     <div class="page-sub">この場所が「煙羅煙羅」になるまでの記録</div>
   </div>
 
-  <div class="preface">
+  <div class="panel preface">
     開業当時、この場所に残されていた記録を、そのまま掲載しています。<br>
     書いた人間については、わかりません。<br>
     <strong>——スタッフ一同</strong>
@@ -161,11 +146,11 @@
       <span class="date">解体初日</span>
     </a>
 
-        <a href="diary-003.html" class="record-item">
+    <div class="record-item locked">
       <span class="num">記録_003</span>
-      <span class="title">消えたメジャー</span>
-      <span class="date">解体作業中</span>
-    </a>
+      <span class="lock">🔒</span>
+      <span class="title">この記録は、まだ公開されていません</span>
+    </div>
 
   </div>
 
@@ -175,7 +160,7 @@
   煙羅煙羅 5th Anniversary &copy; 2025<br>
   <a href="index.html">TOP</a> ／
   <a href="bbs.html">掲示板</a><br><br>
-  <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
+  <span style="font-size:10px; color:#555;">このサイトはInternet Explorer 6.0以上推奨です</span>
 </footer>
 
 </body>
