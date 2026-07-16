@@ -7,19 +7,17 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0a0a0a;
-    --bg2: #111111;
-    --border: #2a2a2a;
+    --border: #3a3a3a;
     --white: #e8e8e0;
-    --dim: #888880;
-    --accent: #c8b89a;
-    --red: #c41818;
+    --dim: #b0a89c;
+    --accent: #e0d0a8;
+    --gold: #e8c34a;
   }
   body {
     background-color: #050505;
     background-image: url("bg-sub.png");
     background-repeat: repeat;
-    background-size: 400px auto;
+    background-size: 380px auto;
     color: var(--white);
     font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
     font-size: 14px;
@@ -40,14 +38,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--bg2);
+    background: rgba(10,10,10,0.9);
     position: sticky;
     top: 0;
     z-index: 50;
   }
   .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
-  .header-right { font-size: 11px; color: var(--dim); }
-  .header-right a { color: var(--dim); text-decoration: none; }
+  .header-right a { color: var(--dim); text-decoration: none; font-size: 11px; }
   .header-right a:hover { color: var(--accent); }
   .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
   .page-head { text-align: center; padding: 32px 16px 24px; }
@@ -57,70 +54,63 @@
     font-family: "MS Mincho", serif;
     letter-spacing: 0.2em;
     color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
   }
   .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
   .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
   .intro {
+    background: rgba(8,8,8,0.82);
+    border: 1px solid var(--border);
+    padding: 24px;
     text-align: center;
-    padding: 24px 16px;
     font-size: 13.5px;
     line-height: 2.4;
-    color: var(--white);
+    margin-bottom: 28px;
   }
-  .intro .sign {
-    display: block;
-    margin-top: 16px;
-    font-size: 12px;
-    color: var(--dim);
-  }
-  .event-box {
-    border: 1px solid var(--border);
-    margin-bottom: 24px;
-  }
-  .event-head {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-    background: var(--bg2);
-    font-size: 12px;
-    color: var(--accent);
-    letter-spacing: 0.15em;
-  }
-  .event-body { padding: 20px 18px; font-size: 13px; line-height: 2.1; }
+  .intro .sign { display: block; margin-top: 16px; font-size: 12px; color: var(--dim); }
+
+  /* 期間ボックス */
   .date-box {
-    border: 1px solid var(--accent);
+    background: rgba(8,8,8,0.82);
+    border: 1px solid var(--gold);
     padding: 24px 20px;
-    margin: 24px 0;
+    margin-bottom: 28px;
     text-align: center;
   }
-  .date-label {
-    font-size: 11px;
-    color: var(--dim);
-    letter-spacing: 0.2em;
-    margin-bottom: 8px;
-  }
-  .date-main {
-    font-size: 22px;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    margin-bottom: 4px;
-  }
-  .date-sub {
+  .date-total {
     font-size: 12px;
     color: var(--dim);
-    margin-top: 16px;
-    line-height: 2;
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
   }
-  .coming {
-    text-align: center;
-    padding: 32px 16px;
-    border: 1px dashed var(--border);
-    margin: 24px 0;
-    font-size: 12px;
-    color: var(--dim);
-    line-height: 2.2;
+  .date-total strong { color: var(--gold); font-size: 15px; font-weight: normal; }
+  .fes {
+    padding: 14px 0;
+    border-top: 1px dashed var(--border);
   }
-  .blink { animation: blink 1s step-end infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
+  .fes-name { font-size: 16px; color: var(--accent); letter-spacing: 0.1em; }
+  .fes-date { font-size: 15px; color: var(--white); margin-top: 6px; font-family: "Courier New", monospace; }
+  .fes-note { font-size: 11px; color: var(--dim); margin: 16px 0 6px; letter-spacing: 0.1em; }
+
+  /* 企画カード */
+  .card {
+    display: block;
+    background: rgba(8,8,8,0.82);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    background: rgba(30,26,18,0.7);
+  }
+  .card-label { font-size: 11px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 10px; }
+  .card-title { font-size: 18px; color: var(--white); letter-spacing: 0.05em; margin-bottom: 10px; }
+  .card-desc { font-size: 12px; color: var(--dim); line-height: 2; }
+  .card-more { margin-top: 14px; font-size: 12px; color: var(--accent); text-align: right; }
+
   footer {
     border-top: 1px solid var(--border);
     padding: 24px 16px;
@@ -129,6 +119,7 @@
     color: var(--dim);
     line-height: 2;
     margin-top: 48px;
+    background: rgba(10,10,10,0.85);
   }
   footer a { color: var(--dim); text-decoration: none; }
   footer a:hover { color: var(--accent); }
@@ -149,8 +140,6 @@
     <div class="page-sub">煙の妖怪が、店を開いて5年になりました</div>
   </div>
 
-  <hr class="divider">
-
   <div class="intro">
     5年間、よくわからないまま、やってきました。<br>
     人間のみなさんが来てくれたおかげです。<br>
@@ -161,55 +150,50 @@
   </div>
 
   <div class="date-box">
-    <div class="date-label">── 開催期間 ──</div>
-    <div class="date-main">8月10日（月）〜 8月17日（月）</div>
-    <div class="date-sub">
-      さらに——<br>
-      <span style="color:var(--accent);">延長期間：8月24日（月）〜 8月31日（月）</span><br>
-      煙が、まだ残っていたら。
+    <div class="date-total">開催期間　<strong>8月いっぱい</strong></div>
+
+    <div class="fes">
+      <div class="fes-name">本祭</div>
+      <div class="fes-date">8/10 〜 8/17</div>
+    </div>
+
+    <div class="fes-note">── まだ煙が残っていたら…… ──</div>
+
+    <div class="fes">
+      <div class="fes-name">後煙祭（こうえんさい）</div>
+      <div class="fes-date">8/24 〜 8/31</div>
     </div>
   </div>
 
-  <!-- 企画概要 -->
-  <div class="event-box">
-    <div class="event-head">■ 記憶の断片収集（スタンプラリー）</div>
-    <div class="event-body">
-      来店、注文、サイトの探索——<br>
-      いろいろな方法で「記憶の断片」が集まります。<br>
-      集めた数に応じて、贈り物を用意しています。<br>
-      <br>
-      10個すべて集めた人には、特別なものを。<br>
-      <br>
-      <span style="color:var(--dim); font-size:12px;">※詳細は近日公開します。</span>
-    </div>
-  </div>
+  <hr class="divider">
 
-  <div class="event-box">
-    <div class="event-head">■ 限定特典</div>
-    <div class="event-body">
-      壁紙、ステッカー、グッズ、限定フレーバー——<br>
-      期間中だけの贈り物があります。<br>
-      <br>
-      <span style="color:var(--dim); font-size:12px;">※詳細は近日公開します。</span>
+  <a href="stamp.html" class="card">
+    <div class="card-label">STAMP RALLY</div>
+    <div class="card-title">記憶の断片</div>
+    <div class="card-desc">
+      来店、注文、サイトの探索——いろいろな方法で「記憶の断片」が集まります。集めた数に応じて、贈り物を。
     </div>
-  </div>
+    <div class="card-more">▶ 詳細を見る</div>
+  </a>
 
-  <div class="coming">
-    <span class="blink">■</span> このページは、更新されます。<br>
-    ときどき、見にきてください。<br>
-    <br>
-    ——えんらえんら
-  </div>
+  <a href="goods.html" class="card">
+    <div class="card-label">SPECIAL GOODS</div>
+    <div class="card-title">5周年記念特典</div>
+    <div class="card-desc">
+      壁紙、ステッカー、限定グッズ——期間中だけの、5周年記念の贈り物。
+    </div>
+    <div class="card-more">▶ 詳細を見る</div>
+  </a>
 
 </div>
 
 <footer>
   煙羅煙羅 5th Anniversary &copy; 2025<br>
   <a href="index.html">TOP</a> ／
-  <a href="diary.html">謎の日記</a> ／
-  <a href="bbs.html">掲示板</a> ／
-  <a href="about.html">プロフィール</a><br><br>
-  <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
+  <a href="stamp.html">記憶の断片</a> ／
+  <a href="goods.html">記念特典</a> ／
+  <a href="shogo.html">称号の間</a><br><br>
+  <span style="font-size:10px; color:#555;">このサイトはInternet Explorer 6.0以上推奨です</span>
 </footer>
 
 </body>
