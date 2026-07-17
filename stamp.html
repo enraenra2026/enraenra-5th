@@ -99,7 +99,27 @@
   }
   .section-title::before { content: "■"; margin-right: 10px; color: var(--gold); }
   .body { padding: 18px; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .step {
+    border: 1px solid rgba(226,195,77,.25);
+    padding: 16px;
+    background: rgba(13,13,11,.78);
+  }
+  .step b {
+    display: inline-block;
+    min-width: 38px;
+    color: #050504;
+    background: var(--gold);
+    text-align: center;
+    margin-right: 8px;
+  }
   .point { color: var(--gold); font-weight: bold; white-space: nowrap; }
+  .red { color: #ff7268; }
+  .green { color: #5be0aa; }
   .note { color: var(--dim); font-size: 13px; margin-top: 10px; }
   .list { list-style: none; }
   .list li {
@@ -138,7 +158,9 @@
   .route-card.green::before { background: var(--green); }
   .route-card.red::before { background: var(--red); }
   .route-card.gold::before { background: var(--gold); }
-  .route-list { list-style: none; }
+  .route-list {
+    list-style: none;
+  }
   .route-list li {
     display: flex;
     justify-content: space-between;
@@ -147,7 +169,32 @@
     border-bottom: 1px dotted rgba(226,195,77,.18);
   }
   .route-list li:last-child { border-bottom: 0; }
+  .route-list a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(226,195,77,.55);
+  }
+  .quest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .quest {
+    min-height: 112px;
+    padding: 14px;
+    border: 1px solid rgba(29,139,102,.5);
+    background: linear-gradient(160deg, rgba(29,139,102,.12), rgba(0,0,0,.25));
+  }
+  .quest a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(226,195,77,.55);
+  }
   .rewards .list li { grid-template-columns: 76px 1fr; }
+  .celebrate {
+    border-color: rgba(167,45,34,.55);
+    background: linear-gradient(160deg, rgba(167,45,34,.16), rgba(0,0,0,.45));
+  }
   .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .btn {
     display: inline-block;
@@ -169,6 +216,7 @@
   footer a { color: var(--dim); text-decoration: none; }
   @media (max-width: 720px) {
     header { align-items: flex-start; }
+    .steps, .quest-grid { grid-template-columns: 1fr; }
     .list li, .rewards .list li { grid-template-columns: 1fr; gap: 2px; }
     .route-list li { flex-direction: column; gap: 2px; }
     .tag { text-align: left; }
@@ -191,7 +239,6 @@
 
   <section class="summary">
     <p>まずは特設ホームページ訪問とInstagramの5周年記念動画をいいねで <strong>1pt GET</strong></p>
-   <p>ポイントを獲得する毎に謎の日記が開放されます</p>
     <img src="stamp-card.png" alt="記憶の断片 スタンプカード" class="stamp-card-image">
   </section>
 
@@ -221,6 +268,8 @@
         <div class="route-card gold">
           <ul class="route-list">
             <li><span>隠しリンク発見</span><span class="point">1pt</span></li>
+            <li><span>キリ番踏破：キリ番のスクショ提示＋BBS報告</span><span class="point">1pt</span></li>
+            <li><span>称号の間のキリ番クエスト達成</span><span class="point">1pt</span></li>
             <li><span>煙幕シューティング週間ランキング上位2位まで</span><span class="point">1pt</span></li>
             <li><span>BBS書き込み後えんらえんらから返信があったら</span><span class="point">1pt</span></li>
             <li><span>SNSに #煙羅煙羅 をつけて投稿</span><span class="point">1pt</span></li>
@@ -240,9 +289,9 @@
         <li><span class="tag">5pt</span><span>ライター</span></li>
         <li><span class="tag">6pt</span><span>タオル</span></li>
         <li><span class="tag">7pt</span><span>アクリルキーホルダー</span></li>
-        <li><span class="tag">8pt</span><span>煙羅煙羅3Dマウスピース</span></li>
-        <li><span class="tag">9pt</span><span>ホログラムステッカー</span></li>
-        <li><span class="tag">10pt</span><span>隠しページ解放 ＋ くじ引きで5周年記念豪華グッズいずれか1点 or サブスク1ヶ月</span></li>
+        <li><span class="tag">8pt</span><span>3Dプリンター製マウスピース</span></li>
+        <li><span class="tag">9pt</span><span>煙羅煙羅3Dマウスピース</span></li>
+        <li><span class="tag">10pt</span><span>隠しページ解放 ＋ くじ引きで高単価グッズ1点 or サブスク1ヶ月</span></li>
       </ul>
     </div>
   </section>
