@@ -53,7 +53,9 @@
   }
   .brand { color: var(--gold); letter-spacing: .18em; font-weight: bold; }
   header a { color: var(--dim); text-decoration: none; font-size: 12px; }
+
   .wrap { max-width: 960px; margin: 0 auto; padding: 42px 16px 72px; }
+
   .hero { text-align: center; padding: 24px 0 32px; }
   .eyebrow { color: var(--gold); letter-spacing: .3em; font-size: 12px; }
   h1 {
@@ -65,6 +67,7 @@
     text-shadow: 0 0 18px rgba(226,195,77,.18);
   }
   .lead { margin-top: 12px; color: var(--dim); font-size: 14px; }
+
   .summary {
     position: relative;
     margin: 24px auto 34px;
@@ -74,21 +77,16 @@
     text-align: center;
   }
   .summary strong { color: var(--gold); font-size: 32px; padding: 0 4px; }
-  .stamp-strip {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 8px;
-    margin-top: 18px;
+
+  .stamp-card-image {
+    width: 100%;
+    max-width: 760px;
+    display: block;
+    margin: 20px auto 0;
+    border: 1px solid rgba(226,195,77,.45);
+    box-shadow: 0 12px 36px rgba(0,0,0,.45);
   }
-  .stamp {
-    aspect-ratio: 1;
-    border: 1px dashed var(--gold2);
-    display: grid;
-    place-items: center;
-    color: rgba(226,195,77,.45);
-    background: rgba(0,0,0,.42);
-    font-size: clamp(14px, 3vw, 22px);
-  }
+
   .section {
     margin: 28px 0;
     border: 1px solid rgba(226,195,77,.28);
@@ -105,6 +103,7 @@
   }
   .section-title::before { content: "■"; margin-right: 10px; color: var(--gold); }
   .body { padding: 18px; }
+
   .steps {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -123,10 +122,11 @@
     text-align: center;
     margin-right: 8px;
   }
+
   .point { color: var(--gold); font-weight: bold; white-space: nowrap; }
-  .red { color: #ff7268; }
   .green { color: #5be0aa; }
   .note { color: var(--dim); font-size: 13px; margin-top: 10px; }
+
   .list { list-style: none; }
   .list li {
     display: grid;
@@ -141,6 +141,7 @@
     font-weight: bold;
     text-align: right;
   }
+
   .quest-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -157,11 +158,13 @@
     text-decoration: none;
     border-bottom: 1px solid rgba(226,195,77,.55);
   }
+
   .rewards .list li { grid-template-columns: 76px 1fr; }
   .celebrate {
     border-color: rgba(167,45,34,.55);
     background: linear-gradient(160deg, rgba(167,45,34,.16), rgba(0,0,0,.45));
   }
+
   .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .btn {
     display: inline-block;
@@ -171,6 +174,7 @@
     background: rgba(0,0,0,.45);
     text-decoration: none;
   }
+
   footer {
     margin-top: 46px;
     padding: 26px 16px;
@@ -181,6 +185,7 @@
     font-size: 12px;
   }
   footer a { color: var(--dim); text-decoration: none; }
+
   @media (max-width: 720px) {
     header { align-items: flex-start; }
     .steps, .quest-grid { grid-template-columns: 1fr; }
@@ -197,6 +202,7 @@
 </header>
 
 <main class="wrap">
+
   <section class="hero">
     <div class="eyebrow">5TH ANNIVERSARY QUEST</div>
     <h1>記憶の断片</h1>
@@ -206,9 +212,8 @@
   <section class="summary">
     <p>まずはこの2つで <strong>2pt</strong> から開始</p>
     <p class="note">来店時にスタッフへ達成内容を見せてください。</p>
-    <div class="stamp-strip" aria-label="スタンプ欄">
-      <div class="stamp">1</div><div class="stamp">2</div><div class="stamp">3</div><div class="stamp">4</div><div class="stamp">5</div>
-    </div>
+
+    <img src="stamp-card.png" alt="記憶の断片 スタンプカード" class="stamp-card-image">
   </section>
 
   <section class="section">
@@ -311,6 +316,7 @@
     <a href="shogo.html">称号の間</a><br><br>
     <span style="font-size:10px; color:#555;">このサイトはInternet Explorer 6.0以上推奨です</span>
   </footer>
+
 </main>
 
 </body>
