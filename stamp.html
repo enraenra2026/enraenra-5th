@@ -7,240 +7,311 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --border: #3a3a3a;
-    --white: #e8e8e0;
-    --dim: #b0a89c;
-    --accent: #e0d0a8;
-    --gold: #e8c34a;
+    --bg: #050504;
+    --panel: rgba(9, 10, 8, 0.92);
+    --panel2: rgba(19, 16, 10, 0.94);
+    --gold: #e2c34d;
+    --gold2: #8d7530;
+    --red: #a72d22;
+    --green: #1d8b66;
+    --white: #ece7d8;
+    --dim: #aaa28f;
+    --line: rgba(226, 195, 77, 0.35);
   }
   body {
-    background-color: #050505;
-    background-image: url("bg-sub.png");
-    background-repeat: repeat;
-    background-size: 380px auto;
+    min-height: 100vh;
+    background:
+      linear-gradient(rgba(0,0,0,.76), rgba(0,0,0,.82)),
+      repeating-linear-gradient(90deg, rgba(167,45,34,.18) 0 24px, transparent 24px 72px),
+      repeating-linear-gradient(0deg, rgba(29,139,102,.16) 0 18px, transparent 18px 64px),
+      var(--bg);
     color: var(--white);
     font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.8;
-    min-height: 100vh;
   }
   body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.62);
+    background: radial-gradient(circle at 50% 10%, rgba(226,195,77,.12), transparent 32%),
+      repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,.22) 2px 4px);
     pointer-events: none;
-    z-index: -1;
+    z-index: 10;
   }
+  a { color: inherit; }
   header {
-    border-bottom: 1px solid var(--border);
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(10,10,10,0.9);
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(226,195,77,.22);
+    background: rgba(5,5,4,.94);
   }
-  .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
-  .header-right a { color: var(--dim); text-decoration: none; font-size: 11px; }
-  .header-right a:hover { color: var(--accent); }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
-  .page-head { text-align: center; padding: 32px 16px 24px; }
-  .page-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 12px; }
-  .page-title {
-    font-size: clamp(24px, 6vw, 36px);
-    font-family: "MS Mincho", serif;
-    letter-spacing: 0.2em;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  .brand { color: var(--gold); letter-spacing: .18em; font-weight: bold; }
+  header a { color: var(--dim); text-decoration: none; font-size: 12px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 42px 16px 72px; }
+  .hero { text-align: center; padding: 24px 0 32px; }
+  .eyebrow { color: var(--gold); letter-spacing: .3em; font-size: 12px; }
+  h1 {
+    margin-top: 10px;
+    font-family: "MS Mincho", "ＭＳ 明朝", serif;
+    font-size: clamp(34px, 7vw, 64px);
+    font-weight: normal;
+    letter-spacing: .16em;
+    text-shadow: 0 0 18px rgba(226,195,77,.18);
   }
-  .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
-  .divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
-
-  .sec {
-    background: rgba(8,8,8,0.85);
-    border: 1px solid var(--border);
-    margin-bottom: 20px;
-  }
-  .sec-head {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(20,18,14,0.6);
-    font-size: 13px;
-    color: var(--gold);
-    letter-spacing: 0.1em;
-  }
-  .sec-body { padding: 18px; font-size: 12.5px; line-height: 2; color: var(--white); }
-  .sec-body .dim { color: var(--dim); font-size: 11.5px; }
-
-  .rule-lead {
-    background: rgba(8,8,8,0.85);
-    border: 1px solid var(--gold);
-    padding: 20px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    line-height: 2.1;
+  .lead { margin-top: 12px; color: var(--dim); font-size: 14px; }
+  .summary {
+    position: relative;
+    margin: 24px auto 34px;
+    padding: 22px;
+    border: 2px solid var(--gold);
+    background: linear-gradient(135deg, rgba(226,195,77,.1), rgba(167,45,34,.08)), var(--panel);
     text-align: center;
   }
-  .rule-lead strong { color: var(--gold); font-weight: normal; font-size: 20px; }
-
-  .route-title { color: var(--accent); font-size: 12.5px; margin: 14px 0 6px; letter-spacing: 0.08em; }
-  .route-title:first-child { margin-top: 0; }
-  ul.plist { list-style: none; padding-left: 0; }
-  ul.plist li {
-    padding: 5px 0 5px 20px;
-    position: relative;
-    border-bottom: 1px dotted #2a2a2a;
-    font-size: 12.5px;
+  .summary strong { color: var(--gold); font-size: 32px; padding: 0 4px; }
+  .stamp-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-top: 18px;
   }
-  ul.plist li::before { content: "・"; position: absolute; left: 4px; color: var(--dim); }
-  ul.plist li .pt { color: var(--gold); font-weight: bold; }
-
-  /* 報酬テーブル */
-  table.reward {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12.5px;
+  .stamp {
+    aspect-ratio: 1;
+    border: 1px dashed var(--gold2);
+    display: grid;
+    place-items: center;
+    color: rgba(226,195,77,.45);
+    background: rgba(0,0,0,.42);
+    font-size: clamp(14px, 3vw, 22px);
   }
-  table.reward th, table.reward td {
-    padding: 9px 10px;
-    border-bottom: 1px dashed #2a2a2a;
-    text-align: left;
+  .section {
+    margin: 28px 0;
+    border: 1px solid rgba(226,195,77,.28);
+    background: var(--panel);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.6), 0 18px 60px rgba(0,0,0,.35);
   }
-  table.reward th {
+  .section-title {
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(226,195,77,.22);
     color: var(--gold);
-    font-family: "Courier New", monospace;
-    width: 62px;
+    font-weight: bold;
+    letter-spacing: .08em;
+    background: linear-gradient(90deg, rgba(226,195,77,.1), transparent);
+  }
+  .section-title::before { content: "■"; margin-right: 10px; color: var(--gold); }
+  .body { padding: 18px; }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .step {
+    border: 1px solid rgba(226,195,77,.25);
+    padding: 16px;
+    background: rgba(13,13,11,.78);
+  }
+  .step b {
+    display: inline-block;
+    min-width: 38px;
+    color: #050504;
+    background: var(--gold);
+    text-align: center;
+    margin-right: 8px;
+  }
+  .point { color: var(--gold); font-weight: bold; white-space: nowrap; }
+  .red { color: #ff7268; }
+  .green { color: #5be0aa; }
+  .note { color: var(--dim); font-size: 13px; margin-top: 10px; }
+  .list { list-style: none; }
+  .list li {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 12px;
+    padding: 13px 0;
+    border-bottom: 1px dotted rgba(226,195,77,.2);
+  }
+  .list li:last-child { border-bottom: 0; }
+  .tag {
+    color: var(--gold);
     font-weight: bold;
     text-align: right;
-    vertical-align: top;
   }
-  table.reward tr.final th { color: var(--gold); font-size: 15px; }
-  table.reward tr.final td { color: var(--accent); }
-
-  .note-box {
-    background: rgba(20,8,8,0.82);
-    border: 1px solid #5a2a2a;
-    padding: 18px;
-    margin-top: 8px;
-    font-size: 11.5px;
-    color: var(--dim);
-    line-height: 2;
+  .quest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
-  .note-box .n-title { color: #d88; margin-bottom: 8px; }
-
+  .quest {
+    min-height: 112px;
+    padding: 14px;
+    border: 1px solid rgba(29,139,102,.5);
+    background: linear-gradient(160deg, rgba(29,139,102,.12), rgba(0,0,0,.25));
+  }
+  .quest a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(226,195,77,.55);
+  }
+  .rewards .list li { grid-template-columns: 76px 1fr; }
+  .celebrate {
+    border-color: rgba(167,45,34,.55);
+    background: linear-gradient(160deg, rgba(167,45,34,.16), rgba(0,0,0,.45));
+  }
+  .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: rgba(0,0,0,.45);
+    text-decoration: none;
+  }
   footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 16px;
-    text-align: center;
-    font-size: 11px;
+    margin-top: 46px;
+    padding: 26px 16px;
+    border: 1px solid rgba(226,195,77,.18);
+    background: rgba(0,0,0,.62);
     color: var(--dim);
-    line-height: 2;
-    margin-top: 48px;
-    background: rgba(10,10,10,0.85);
+    text-align: center;
+    font-size: 12px;
   }
   footer a { color: var(--dim); text-decoration: none; }
-  footer a:hover { color: var(--accent); }
+  @media (max-width: 720px) {
+    header { align-items: flex-start; }
+    .steps, .quest-grid { grid-template-columns: 1fr; }
+    .list li, .rewards .list li { grid-template-columns: 1fr; gap: 2px; }
+    .tag { text-align: left; }
+  }
 </style>
 </head>
 <body>
 
 <header>
-  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
-  <span class="header-right"><a href="event.html">企画一覧に戻る</a></span>
+  <div class="brand">煙羅煙羅 / ENRAENRA</div>
+  <a href="index.html">企画一覧に戻る</a>
 </header>
 
-<div class="wrap">
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">5TH ANNIVERSARY QUEST</div>
+    <h1>記憶の断片</h1>
+    <p class="lead">8月中に断片を集めると、記念品や特別なお祝いに交換できます。</p>
+  </section>
 
-  <div class="page-head">
-    <div class="page-eyebrow" style="color:var(--gold); font-size:25px; letter-spacing:0.2em;">5周年記念企画</div>
-    <div class="page-title">記憶の断片</div>
-    <div class="page-sub">集めるほど、煙羅煙羅の記憶が戻る</div>
-  </div>
-
-  <div class="rule-lead">
-    断片を集めて <strong>10pt</strong><br>
-    <span style="font-size:15px; color:var(--dim);">来店・消費・LPクエスト、すべて合算。到達で記念品を。</span>
-  </div>
-
-  <!-- 貯め方 -->
-  <div class="sec">
-    <div class="sec-head">■ ポイントの貯め方（3経路・合算）</div>
-    <div class="sec-body">
-
-      <div class="route-title">〈来店〉</div>
-      <ul class="plist">
-        <li>来店ごとに<span class="pt">1pt</span><span class="dim">（上限2pt）</span></li>
-        <li>Instagramいいね＋LP訪問 <span class="pt">1pt</span></li>
-        <li>15時までの来店 <span class="pt">1pt</span></li>
-        <li>Google口コミ投稿 <span class="pt">1pt</span></li>
-        <li>SNS投稿（ハッシュタグ） <span class="pt">1pt</span></li>
-        <li>新規客を連れて来店 <span class="pt">1pt</span></li>
-        <li>キリ番踏破 <span class="pt">最大2pt</span><span class="dim">（スクショ提示1pt＋専用クエスト1pt）</span></li>
-      </ul>
-
-      <div class="route-title">〈消費〉</div>
-      <ul class="plist">
-        <li>シャンパン 1本<span class="pt">3pt</span>／2本<span class="pt">5pt</span></li>
-        <li>シャンメリー・イベント限定ドリンク 1本<span class="pt">1pt</span><span class="dim">（上限2pt）</span></li>
-        <li>スタッフドリンク <span class="dim">（上限2pt）</span></li>
-      </ul>
-
-      <div class="route-title">〈LPクエスト〉</div>
-      <ul class="plist">
-        <li>隠しリンク発見 <span class="pt">1pt</span></li>
-        <li>弾幕シューティング上位2位以内 <span class="pt">2pt</span></li>
-        <li>BBS書き込み＋煙羅煙羅からの返信 <span class="pt">1pt</span></li>
-        <li>キリ番スクショ <span class="pt">1pt</span></li>
-        <li>LPリンクSNSシェア <span class="pt">1pt</span></li>
-      </ul>
-
+  <section class="summary">
+    <p>まずはこの2つで <strong>2pt</strong> から開始</p>
+    <p class="note">来店時にスタッフへ達成内容を見せてください。</p>
+    <div class="stamp-strip" aria-label="スタンプ欄">
+      <div class="stamp">1</div><div class="stamp">2</div><div class="stamp">3</div><div class="stamp">4</div><div class="stamp">5</div>
     </div>
-  </div>
+  </section>
 
-  <!-- 報酬 -->
-  <div class="sec">
-    <div class="sec-head">■ 報酬（1枚目のカード）</div>
-    <div class="sec-body">
-      <table class="reward">
-        <tr><th>1-2pt</th><td>5周年記念ステッカー</td></tr>
-        <tr><th>3pt</th><td>缶バッジ</td></tr>
-        <tr><th>4pt</th><td>クリアファイル</td></tr>
-        <tr><th>5pt</th><td>ライター</td></tr>
-        <tr><th>6pt</th><td>タオル</td></tr>
-        <tr><th>7pt</th><td>アクリルキーホルダー</td></tr>
-        <tr><th>8pt</th><td>3Dプリンター製マウスピース</td></tr>
-        <tr><th>9pt</th><td>えんらえんらホログラムシール</td></tr>
-        <tr class="final"><th>10pt</th><td>隠しページ解放＋くじ引きで高単価グッズ1点 or サブスク1ヶ月</td></tr>
-      </table>
+  <section class="section">
+    <div class="section-title">最初のポイント付与</div>
+    <div class="body">
+      <div class="steps">
+        <div class="step"><b>1</b>8月中に来店 <span class="point">1pt</span></div>
+        <div class="step"><b>2</b>5周年特設ホームページ訪問 ＋ Instagramの5周年記念告知投稿へいいね <span class="point">1pt</span></div>
+      </div>
+      <p class="note">初回はこの2条件で固定です。以降は下のクエストやお祝いでポイントを増やせます。</p>
     </div>
-  </div>
+  </section>
 
- 
-
-  <!-- シャンパン特典 -->
-  <div class="sec">
-    <div class="sec-head">■ シャンパン特典（スタンプラリーとは別枠）</div>
-    <div class="sec-body">
-      <span style="color:var(--accent);">通常シャンパン</span>：pt付与のみ<br>
-      <br>
-      <span style="color:var(--accent);">高単価シャンパン</span>：スタンプの有無に関わらず即時贈呈。以下いずれかを選択。<br>
-      <br>
-      <span style="color:var(--gold);">①</span> 5周年記念豪華グッズフルセット<br>
-      <span class="dim">（灰皿・マグカップ・ネックストラップ付きマウスピース or 3Dマウスピース・復刻Tシャツ2種）</span><br>
-      <br>
-     <span style="color:var(--gold);">②</span> サブスク1ヶ月＋5周年記念基本グッズフルセット<br>
-      <span class="dim">（ステッカー・缶バッジ・ライター・アクキー・タオル・クリアファイル）</span>
+  <section class="section">
+    <div class="section-title">ポイントの貯め方</div>
+    <div class="body">
+      <ul class="list">
+        <li><span class="tag">来店</span><span>8月中の来店 <span class="point">1pt</span></span></li>
+        <li><span class="tag">紹介</span><span>新規客を連れて来店 <span class="point">1pt</span></span></li>
+        <li><span class="tag">投稿</span><span>SNS投稿、Google口コミ投稿など <span class="point">各1pt</span></span></li>
+        <li><span class="tag">早来店</span><span>15時までの来店 <span class="point">1pt</span></span></li>
+      </ul>
     </div>
+  </section>
 
-<footer>
-  煙羅煙羅 5th Anniversary &copy; 2025<br>
-  <a href="event.html">5周年記念企画</a> ／
-  <a href="goods.html">記念特典</a> ／
-  <a href="shogo.html">称号の間</a><br><br>
-  <span style="font-size:10px; color:#555;">このサイトはInternet Explorer 6.0以上推奨です</span>
-</footer>
+  <section class="section">
+    <div class="section-title">特設ホームページクエスト</div>
+    <div class="body">
+      <div class="quest-grid">
+        <div class="quest">
+          <strong class="green">隠しリンク発見</strong><br>
+          特設ホームページ内の隠しページを見つける。<br>
+          <span class="point">1pt</span>
+        </div>
+        <div class="quest">
+          <strong class="green">弾幕シューティング</strong><br>
+          上位2位以内に入る。<br>
+          <span class="point">2pt</span>
+        </div>
+        <div class="quest">
+          <strong class="green">BBS書き込み</strong><br>
+          BBSに書き込み、煙羅煙羅から返信をもらう。<br>
+          <span class="point">1pt</span>
+        </div>
+        <div class="quest">
+          <strong class="green"><a href="shogo.html">キリ番踏破</a></strong><br>
+          キリ番スクショ提示で <span class="point">1pt</span>、専用クエスト達成で追加 <span class="point">1pt</span>。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section celebrate">
+    <div class="section-title">お祝い</div>
+    <div class="body">
+      <ul class="list">
+        <li><span class="tag">シャンパン</span><span>1本 <span class="point">3pt</span> / 2本 <span class="point">5pt</span></span></li>
+        <li><span class="tag">限定ドリンク</span><span>シャンメリー・イベント限定ドリンク 1本 <span class="point">1pt</span></span></li>
+        <li><span class="tag">スタッフ</span><span>スタッフドリンク <span class="point">1pt</span></span></li>
+      </ul>
+      <p class="note">旧「消費」は「お祝い」に名称変更しました。</p>
+    </div>
+  </section>
+
+  <section class="section rewards">
+    <div class="section-title">報酬</div>
+    <div class="body">
+      <ul class="list">
+        <li><span class="tag">1-2pt</span><span>5周年記念ステッカー</span></li>
+        <li><span class="tag">3pt</span><span>缶バッジ</span></li>
+        <li><span class="tag">4pt</span><span>クリアファイル</span></li>
+        <li><span class="tag">5pt</span><span>ライター</span></li>
+        <li><span class="tag">6pt</span><span>タオル</span></li>
+        <li><span class="tag">7pt</span><span>アクリルキーホルダー</span></li>
+        <li><span class="tag">8pt</span><span>3Dプリンター製マウスピース</span></li>
+        <li><span class="tag">9pt</span><span>えんらえんらホログラムシール</span></li>
+        <li><span class="tag">10pt</span><span>隠しページ解放 ＋ くじ引きで高単価グッズ1点 or サブスク1ヶ月</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">スタッフに見せるもの</div>
+    <div class="body">
+      <ul class="list">
+        <li><span class="tag">来店</span><span>来店時にスタッフへ申告</span></li>
+        <li><span class="tag">Instagram</span><span>5周年記念告知投稿へのいいね画面</span></li>
+        <li><span class="tag">クエスト</span><span>スクショ、ランキング画面、BBS書き込みなど</span></li>
+      </ul>
+      <div class="button-row">
+        <a class="btn" href="index.html">特設ホームページへ</a>
+        <a class="btn" href="shogo.html">称号の間へ</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    煙羅煙羅 5th Anniversary &copy; 2025<br>
+    <a href="index.html">特設ホームページ</a> ／
+    <a href="shogo.html">称号の間</a><br><br>
+    <span style="font-size:10px; color:#555;">このサイトはInternet Explorer 6.0以上推奨です</span>
+  </footer>
+</main>
 
 </body>
 </html>
