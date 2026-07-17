@@ -99,27 +99,7 @@
   }
   .section-title::before { content: "■"; margin-right: 10px; color: var(--gold); }
   .body { padding: 18px; }
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .step {
-    border: 1px solid rgba(226,195,77,.25);
-    padding: 16px;
-    background: rgba(13,13,11,.78);
-  }
-  .step b {
-    display: inline-block;
-    min-width: 38px;
-    color: #050504;
-    background: var(--gold);
-    text-align: center;
-    margin-right: 8px;
-  }
   .point { color: var(--gold); font-weight: bold; white-space: nowrap; }
-  .red { color: #ff7268; }
-  .green { color: #5be0aa; }
   .note { color: var(--dim); font-size: 13px; margin-top: 10px; }
   .list { list-style: none; }
   .list li {
@@ -135,27 +115,39 @@
     font-weight: bold;
     text-align: right;
   }
-  .quest-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+  .route-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
-  .quest {
-    min-height: 112px;
-    padding: 14px;
-    border: 1px solid rgba(29,139,102,.5);
-    background: linear-gradient(160deg, rgba(29,139,102,.12), rgba(0,0,0,.25));
+  .route-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(226,195,77,.24);
+    background: rgba(13,13,11,.82);
+    padding: 16px 18px 16px 22px;
   }
-  .quest a {
-    color: var(--gold);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(226,195,77,.55);
+  .route-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: var(--gold);
+    opacity: .9;
   }
+  .route-card.green::before { background: var(--green); }
+  .route-card.red::before { background: var(--red); }
+  .route-card.gold::before { background: var(--gold); }
+  .route-list { list-style: none; }
+  .route-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px dotted rgba(226,195,77,.18);
+  }
+  .route-list li:last-child { border-bottom: 0; }
   .rewards .list li { grid-template-columns: 76px 1fr; }
-  .celebrate {
-    border-color: rgba(167,45,34,.55);
-    background: linear-gradient(160deg, rgba(167,45,34,.16), rgba(0,0,0,.45));
-  }
   .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
   .btn {
     display: inline-block;
@@ -177,8 +169,8 @@
   footer a { color: var(--dim); text-decoration: none; }
   @media (max-width: 720px) {
     header { align-items: flex-start; }
-    .steps, .quest-grid { grid-template-columns: 1fr; }
     .list li, .rewards .list li { grid-template-columns: 1fr; gap: 2px; }
+    .route-list li { flex-direction: column; gap: 2px; }
     .tag { text-align: left; }
   }
 </style>
@@ -205,51 +197,35 @@
   <section class="section">
     <div class="section-title">ポイントの貯め方</div>
     <div class="body">
-      <ul class="list">
-        <li><span class="tag">来店</span><span>8月中の来店 <span class="point">1pt</span></span></li>
-        <li><span class="tag">紹介</span><span>新規客を連れて来店 <span class="point">1pt</span></span></li>
-        <li><span class="tag">投稿</span><span>SNS投稿、Google口コミ投稿など <span class="point">各1pt</span></span></li>
-        <li><span class="tag">早来店</span><span>15時までの来店 <span class="point">1pt</span></span></li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-title">特設ホームページクエスト</div>
-    <div class="body">
-      <div class="quest-grid">
-        <div class="quest">
-          <strong class="green">隠しリンク発見</strong><br>
-          特設ホームページ内の隠しページを見つける。<br>
-          <span class="point">1pt</span>
+      <p class="note">上限記載のないものは1ptまで付与。</p>
+      <div class="route-stack">
+        <div class="route-card green">
+          <ul class="route-list">
+            <li><span>8月中の来店 ※2回目の来店まで</span><span class="point">上限2pt</span></li>
+            <li><span>15時までの来店</span><span class="point">1pt</span></li>
+            <li><span>Google口コミ投稿</span><span class="point">1pt</span></li>
+            <li><span>SNS投稿（ハッシュタグ）</span><span class="point">1pt</span></li>
+            <li><span>新規客を連れて来店</span><span class="point">1pt</span></li>
+          </ul>
         </div>
-        <div class="quest">
-          <strong class="green">弾幕シューティング</strong><br>
-          上位2位以内に入る。<br>
-          <span class="point">2pt</span>
+        <div class="route-card red">
+          <ul class="route-list">
+            <li><span>シャンパン1本</span><span class="point">3pt</span></li>
+            <li><span>シャンパン2本 ※2本までpt付与</span><span class="point">5pt</span></li>
+            <li><span>シャンメリー／イベント限定ドリンク 1本 ※各1ptまで</span><span class="point">1pt</span></li>
+            <li><span>スタッフドリンク2杯以上 ※数量に関わらず2杯以上は1pt</span><span class="point">1pt</span></li>
+            <li><span class="note">シャンパン、シャンメリーは8/10~8/17のみの販売。煙残っていたら8/24~31に再販。（8/18~23は休止）</span><span></span></li>
+          </ul>
         </div>
-        <div class="quest">
-          <strong class="green">BBS書き込み</strong><br>
-          BBSに書き込み、煙羅煙羅から返信をもらう。<br>
-          <span class="point">1pt</span>
-        </div>
-        <div class="quest">
-          <strong class="green"><a href="shogo.html">キリ番踏破</a></strong><br>
-          キリ番スクショ提示で <span class="point">1pt</span>、専用クエスト達成で追加 <span class="point">1pt</span>。
+        <div class="route-card gold">
+          <ul class="route-list">
+            <li><span>隠しリンク発見</span><span class="point">1pt</span></li>
+            <li><span>煙幕シューティング週間ランキング上位2位まで</span><span class="point">1pt</span></li>
+            <li><span>BBS書き込み後えんらえんらから返信があったら</span><span class="point">1pt</span></li>
+            <li><span>SNSに #煙羅煙羅 をつけて投稿</span><span class="point">1pt</span></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="section celebrate">
-    <div class="section-title">お祝い</div>
-    <div class="body">
-      <ul class="list">
-        <li><span class="tag">シャンパン</span><span>1本 <span class="point">3pt</span> / 2本 <span class="point">5pt</span></span></li>
-        <li><span class="tag">限定ドリンク</span><span>シャンメリー・イベント限定ドリンク 1本 <span class="point">1pt</span></span></li>
-        <li><span class="tag">スタッフ</span><span>スタッフドリンク <span class="point">1pt</span></span></li>
-      </ul>
-    
     </div>
   </section>
 
@@ -264,20 +240,16 @@
         <li><span class="tag">6pt</span><span>タオル</span></li>
         <li><span class="tag">7pt</span><span>アクリルキーホルダー</span></li>
         <li><span class="tag">8pt</span><span>3Dプリンター製マウスピース</span></li>
-        <li><span class="tag">9pt</span><span>えんらえんらホログラムシール</span></li>
+        <li><span class="tag">9pt</span><span>煙羅煙羅3Dマウスピース</span></li>
         <li><span class="tag">10pt</span><span>隠しページ解放 ＋ くじ引きで高単価グッズ1点 or サブスク1ヶ月</span></li>
       </ul>
     </div>
   </section>
 
   <section class="section">
-    <div class="section-title">スタッフに見せるもの</div>
+    <div class="section-title">注意</div>
     <div class="body">
-      <ul class="list">
-        <li><span class="tag">来店</span><span>来店時にスタッフへ申告</span></li>
-        <li><span class="tag">Instagram</span><span>5周年記念告知投稿へのいいね画面</span></li>
-        <li><span class="tag">クエスト</span><span>スクショ、ランキング画面、BBS書き込みなど</span></li>
-      </ul>
+      <p>pt付与の際、画面提示やスクリーンショットを確認いたします。確認の取れない場合はpt付与できませんのでご注意ください。</p>
       <div class="button-row">
         <a class="btn" href="index.html">特設ホームページへ</a>
         <a class="btn" href="shogo.html">称号の間へ</a>
