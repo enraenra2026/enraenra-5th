@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>─</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --border: #3a3a3a;
+    --white: #e8e8e0;
+    --dim: #b0a89c;
+    --accent: #e0d0a8;
+  }
+  body {
+    background-color: #030303;
+    background-image: url("bg-sub.png");
+    background-repeat: repeat;
+    background-size: 380px auto;
+    color: var(--white);
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* パスワード画面 */
+  #lock {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .lock-icon { font-size: 32px; color: #444; margin-bottom: 24px; }
+  .lock-text {
+    font-size: 12px;
+    color: var(--dim);
+    line-height: 2.4;
+    margin-bottom: 32px;
+  }
+  .lock-input {
+    background: rgba(0,0,0,0.8);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    font-family: "MS Gothic", monospace;
+    font-size: 15px;
+    padding: 12px 16px;
+    width: 260px;
+    text-align: center;
+    letter-spacing: 0.15em;
+    outline: none;
+  }
+  .lock-input:focus { border-color: var(--accent); }
+  .lock-btn {
+    display: block;
+    margin: 16px auto 0;
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: "MS Gothic", monospace;
+    font-size: 13px;
+    padding: 10px 32px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .lock-btn:hover { background: var(--accent); color: #050505; }
+  .lock-error {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #a44;
+    min-height: 20px;
+  }
+  .lock-back { margin-top: 40px; }
+  .lock-back a { color: #444; text-decoration: none; font-size: 11px; }
+  .lock-back a:hover { color: var(--accent); }
+
+  /* 本文 */
+  #content { display: none; }
+  .wrap { max-width: 620px; margin: 0 auto; padding: 60px 20px 80px; }
+  .record-head { text-align: center; margin-bottom: 48px; }
+  .record-num {
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.3em;
+  }
+  .record-date { font-size: 11px; color: #666; margin-top: 10px; }
+  .record-text {
+    font-size: 14px;
+    color: var(--white);
+    line-height: 2.6;
+    text-align: center;
+  }
+  .record-text p { margin-bottom: 2em; }
+  .sep { color: #444; margin: 2.5em 0; }
+  .secret {
+    margin-top: 60px;
+    font-size: 12px;
+    color: #6a6a60;
+    line-height: 2.4;
+    text-align: center;
+  }
+  .back {
+    margin-top: 60px;
+    text-align: center;
+  }
+  .back a { color: #444; text-decoration: none; font-size: 11px; }
+  .back a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- パスワード画面 -->
+<div id="lock">
+  <div class="lock-icon">🔒</div>
+  <div class="lock-text">
+    この記録は、封じられています。<br>
+    すべての断片を集めた者だけが、<br>
+    ひらくことができます。
+  </div>
+  <input type="password" id="pw" class="lock-input" placeholder="合言葉">
+  <button class="lock-btn" onclick="unlock()">ひらく</button>
+  <div class="lock-error" id="err"></div>
+  <div class="lock-back"><a href="diary.html">もどる</a></div>
+</div>
+
+<!-- 本文（解錠後に表示） -->
+<div id="content">
+  <div class="wrap">
+
+    <div class="record-head">
+      <div class="record-num">記録_666</div>
+      <div class="record-date">日付：たぶん、いま</div>
+    </div>
+
+    <div class="record-text">
+      <p>人間が、たくさん来るようになった。</p>
+      <p>はじめは、こまった。<br>静かなほうが、すきだったから。</p>
+      <p>でも、なれた。</p>
+      <p>なれてしまった。</p>
+
+      <div class="sep">——</div>
+
+      <p>きょう、ひとりの人間が言っていた。<br>「この店、なんかいる気がする」</p>
+      <p>そうです。<br>います。</p>
+      <p>でも、こわがらないでください。<br>わたしは、けむりを吸っているだけです。<br>あなたたちが、置いていったものを。</p>
+
+      <div class="sep">——</div>
+
+      <p>かなしいこと。<br>つかれたこと。<br>だれにも言えなかったこと。</p>
+      <p>ぜんぶ、けむりになって、<br>ここに残ります。</p>
+      <p>わたしが、吸います。</p>
+      <p>だから、また来てください。<br>また、置いていってください。</p>
+      <p>5年。<br>みじかい。</p>
+    </div>
+
+    <div class="secret">
+      （ここまで読んだ人間へ）<br>
+      （あなたは、たぶん、ぜんぶ集めた人ですね）<br>
+      （ありがとう）<br>
+      （この記録は、あなたが最初の読者です）
+    </div>
+
+    <div class="back">
+      <a href="diary.html">もどる</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var PASSWORD = "enraenra5thclear";
+
+  function unlock() {
+    var input = document.getElementById("pw").value.trim().toLowerCase();
+    if (input === PASSWORD) {
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    } else {
+      document.getElementById("err").textContent = "……ちがいます。";
+      document.getElementById("pw").value = "";
+    }
+  }
+
+  document.getElementById("pw").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") unlock();
+  });
+</script>
+
+</body>
+</html>
