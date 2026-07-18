@@ -180,11 +180,11 @@
 </div>
 
 <script>
-  var PASSWORD = "enraenra5thclear";
+ var PASSWORDS = ["煙の妖怪"];
 
   function unlock() {
     var input = document.getElementById("pw").value.trim().toLowerCase();
-    if (input === PASSWORD) {
+    if (PASSWORDS.indexOf(input) !== -1) {
       document.getElementById("lock").style.display = "none";
       document.getElementById("content").style.display = "block";
     } else {
