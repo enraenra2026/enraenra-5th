@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5周年記念企画 ─ 煙羅煙羅 5th Anniversary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --border: #3a3a3a;
+    --white: #e8e8e0;
+    --dim: #b0a89c;
+    --accent: #e0d0a8;
+    --gold: #e8c34a;
+  }
+  body {
+    background-color: #050505;
+    background-image: url("bg-sub.png");
+    background-repeat: repeat;
+    background-size: 380px auto;
+    color: var(--white);
+    font-family: "MS Gothic", "ＭＳ ゴシック", monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    pointer-events: none;
+    z-index: -1;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10,10,10,0.9);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .site-title { font-size: 12px; color: var(--accent); letter-spacing: 0.15em; }
+  .header-right a { color: var(--dim); text-decoration: none; font-size: 11px; }
+  .header-right a:hover { color: var(--accent); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+  .page-head { text-align: center; padding: 32px 16px 24px; }
+  .page-eyebrow { font-size: 11px; color: var(--dim); letter-spacing: 0.3em; margin-bottom: 12px; }
+  .page-title {
+    font-size: clamp(24px, 6vw, 36px);
+    font-family: "MS Mincho", serif;
+    letter-spacing: 0.2em;
+    color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  }
+  .page-sub { margin-top: 12px; font-size: 11px; color: var(--dim); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .intro {
+    background: rgba(8,8,8,0.82);
+    border: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    font-size: 13.5px;
+    line-height: 2.4;
+    margin-bottom: 28px;
+  }
+  .intro .sign { display: block; margin-top: 16px; font-size: 12px; color: var(--dim); }
+
+  /* 期間ボックス */
+  .date-box {
+    background: rgba(8,8,8,0.82);
+    border: 1px solid var(--gold);
+    padding: 24px 20px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  .date-total {
+    font-size: 12px;
+    color: var(--dim);
+    letter-spacing: 0.15em;
+    margin-bottom: 20px;
+  }
+  .date-total strong { color: var(--gold); font-size: 15px; font-weight: normal; }
+  .fes {
+    padding: 14px 0;
+    border-top: 1px dashed var(--border);
+  }
+  .fes-name { font-size: 16px; color: var(--accent); letter-spacing: 0.1em; }
+  .fes-date { font-size: 15px; color: var(--white); margin-top: 6px; font-family: "Courier New", monospace; }
+  .fes-note { font-size: 11px; color: var(--dim); margin: 16px 0 6px; letter-spacing: 0.1em; }
+
+  /* 企画カード */
+  .card {
+    display: block;
+    background: rgba(8,8,8,0.82);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .card:hover {
+    border-color: var(--accent);
+    background: rgba(30,26,18,0.7);
+  }
+  .card-label { font-size: 11px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 10px; }
+  .card-title { font-size: 18px; color: var(--white); letter-spacing: 0.05em; margin-bottom: 10px; }
+  .card-desc { font-size: 12px; color: var(--dim); line-height: 2; }
+  .card-more { margin-top: 14px; font-size: 12px; color: var(--accent); text-align: right; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 16px;
+    text-align: center;
+    font-size: 11px;
+    color: var(--dim);
+    line-height: 2;
+    margin-top: 48px;
+    background: rgba(10,10,10,0.85);
+  }
+  footer a { color: var(--dim); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="site-title">煙羅煙羅 / ENRAENRA</span>
+  <span class="header-right"><a href="index.html">TOP に戻る</a></span>
+</header>
+
+<div class="wrap">
+
+  <div class="page-head">
+    <div class="page-eyebrow">5th ANNIVERSARY EVENT</div>
+    <div class="page-title">5周年記念企画</div>
+    <div class="page-sub">煙の妖怪が、店を開いて5年になりました</div>
+  </div>
+
+  <div class="intro">
+    5年間、よくわからないまま、やってきました。<br>
+    人間のみなさんが来てくれたおかげです。<br>
+    <br>
+    おれいに、いろいろ用意しました。<br>
+    あそびにきてください。
+    <span class="sign">——えんらえんら</span>
+  </div>
+
+  <div class="date-box">
+    <div class="date-total">開催期間　<strong>8月いっぱい</strong></div>
+
+    <div class="fes">
+      <div class="fes-name">記憶の断片、配布</div>
+      <div class="fes-date">8/1 〜</div>
+      <div class="fes-note" style="margin:10px 0 0;">スタンプカード「記憶の断片」配布、ポイント付与開始<br>※景品交換は8/10から</div>
+    </div>
+
+    <div class="fes">
+      <div class="fes-name">本祭</div>
+      <div class="fes-date">8/10 〜 8/17</div>
+    </div>
+
+    <div class="fes">
+      <div class="fes-name">後煙祭（こうえんさい）</div>
+      <div class="fes-date">8/24 〜 8/31</div>
+    </div>
+
+    <div class="fes-note">── まだ煙が残っていたら…… ──</div>
+  </div>
+
+  <hr class="divider">
+
+  <a href="stamp.html" class="card">
+    <div class="card-label">STAMP RALLY</div>
+    <div class="card-title">記憶の断片</div>
+    <div class="card-desc">
+      来店、注文、サイトの探索——いろいろな方法で「記憶の断片」が集まります。集めた数に応じて、贈り物を。
+    </div>
+    <div class="card-more">▶ 詳細を見る</div>
+  </a>
+
+  <a href="goods.html" class="card">
+    <div class="card-label">SPECIAL GOODS</div>
+    <div class="card-title">5周年記念特典</div>
+    <div class="card-desc">
+      壁紙、ステッカー、限定グッズ——期間中だけの、5周年記念の贈り物。
+    </div>
+    <div class="card-more">▶ 詳細を見る</div>
+  </a>
+
+</div>
+
+<footer>
+  煙羅煙羅 5th Anniversary &copy; 2025<br>
+  <a href="index.html">TOP</a> ／
+  <a href="stamp.html">記憶の断片</a> ／
+  <a href="goods.html">記念特典</a> ／
+  <a href="shogo.html">称号の間</a><br><br>
+  <span style="font-size:10px; color:#555;">このサイトはInternet Explorer 6.0以上推奨です</span>
+</footer>
+
+</body>
+</html>
