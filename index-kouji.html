@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仙台水煙草喫茶 煙羅煙羅 5th Anniversary</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background-color: #060000;
+    background-image: url("tile-bg.png");
+    background-repeat: repeat;
+    background-size: 440px auto;
+    filter: saturate(1.8);
+    color: #e8e0d8;
+    font-family: "MS Gothic", "ＭＳ ゴシック", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+  .box {
+    background: rgba(6,0,0,0.88);
+    border: 2px solid #8a6a2a;
+    padding: 48px 32px;
+    text-align: center;
+    max-width: 520px;
+    width: 100%;
+  }
+  .logo { width: 100%; max-width: 380px; margin: 0 auto 24px; display: block; }
+  .kouji {
+    font-size: 22px;
+    color: #e8c34a;
+    letter-spacing: 0.3em;
+    margin: 32px 0 20px;
+  }
+  .blink { animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .msg {
+    font-size: 13px;
+    color: #b0a89c;
+    line-height: 2.4;
+    margin-bottom: 32px;
+  }
+  .date {
+    font-size: 15px;
+    color: #e8c34a;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .sign { font-size: 12px; color: #8a7a70; margin-top: 24px; }
+  .sns { margin-top: 32px; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+  .sns img { width: 100%; max-width: 300px; display: block; }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <img src="logo.png" alt="仙台水煙草喫茶 煙羅煙羅" class="logo">
+
+  <div class="kouji"><span class="blink">■</span> 工事中 <span class="blink">■</span></div>
+
+  <div class="msg">
+    このサイトは、まだつくっているところです。<br>
+    もうすこし、まってください。
+  </div>
+
+  <div class="date">2026.8.10 公開予定</div>
+
+  <div class="sign">——えんらえんら</div>
+
+  <div class="sns">
+    <a href="https://www.instagram.com/sendai_enra_enra/" target="_blank">
+      <img src="banner-instagram-small.gif" alt="Instagram">
+    </a>
+    <a href="https://x.com/Sendai_EnraEnra" target="_blank">
+      <img src="banner-twitter.gif" alt="twitter">
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
