@@ -190,16 +190,15 @@
 </div>
 
 <script>
-  <script>
-  var PASSWORD = "【ここに漢字】";
+ <script>
   var composing = false;
-
   var pwInput = document.getElementById("pw");
 
   pwInput.addEventListener("compositionstart", function() { composing = true; });
   pwInput.addEventListener("compositionend", function() { composing = false; });
 
-  function unlock() {
+  window.unlock = function() {
+    var PASSWORD = "【ここに漢字】";
     var input = pwInput.value.trim();
     if (input === PASSWORD) {
       document.getElementById("lock").style.display = "none";
@@ -208,14 +207,13 @@
       document.getElementById("err").textContent = "……ちがいます。";
       pwInput.value = "";
     }
-  }
+  };
 
   pwInput.addEventListener("keydown", function(e) {
     if (e.key === "Enter" && !composing && !e.isComposing) {
-      unlock();
+      window.unlock();
     }
   });
-</script>
 </script>
 </body>
 </html>
