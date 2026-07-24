@@ -190,20 +190,32 @@
 </div>
 
 <script>
-  var PASSWORD = "【落】";
+  <script>
+  var PASSWORD = "【ここに漢字】";
+  var composing = false;
+
+  var pwInput = document.getElementById("pw");
+
+  pwInput.addEventListener("compositionstart", function() { composing = true; });
+  pwInput.addEventListener("compositionend", function() { composing = false; });
+
   function unlock() {
-    var input = document.getElementById("pw").value.trim();
+    var input = pwInput.value.trim();
     if (input === PASSWORD) {
       document.getElementById("lock").style.display = "none";
       document.getElementById("content").style.display = "block";
     } else {
       document.getElementById("err").textContent = "……ちがいます。";
-      document.getElementById("pw").value = "";
+      pwInput.value = "";
     }
   }
-  document.getElementById("pw").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") unlock();
+
+  pwInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" && !composing && !e.isComposing) {
+      unlock();
+    }
   });
+</script>
 </script>
 </body>
 </html>
