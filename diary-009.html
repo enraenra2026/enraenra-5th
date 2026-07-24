@@ -22,17 +22,6 @@
     line-height: 1.8;
     min-height: 100vh;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg, transparent, transparent 2px,
-      rgba(0,0,0,0.08) 2px, rgba(0,0,0,0.08) 4px
-    );
-    pointer-events: none;
-    z-index: 100;
-  }
   header {
     border-bottom: 1px solid var(--border);
     padding: 8px 16px;
@@ -82,6 +71,7 @@
     color: var(--dim);
     line-height: 2;
   }
+  .reply + .reply { margin-top: 18px; }
   .reply-label { color: var(--accent); font-size: 11px; letter-spacing: 0.1em; margin-bottom: 6px; }
   .reply-sign { text-align: right; margin-top: 8px; color: #555; font-size: 11px; }
   .nav-bottom {
@@ -97,11 +87,6 @@
     border: 1px solid var(--border);
   }
   .nav-bottom a:hover { border-color: var(--accent); }
-  .nav-bottom .disabled {
-    color: #444;
-    padding: 10px 16px;
-    border: 1px solid var(--border);
-  }
   footer {
     border-top: 1px solid var(--border);
     padding: 24px 16px;
@@ -116,6 +101,23 @@
 </style>
 </head>
 <body>
+
+<div id="lock" style="min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 20px; text-align:center;">
+  <div style="font-size:32px; color:#444; margin-bottom:24px;">🔒</div>
+  <div style="font-size:12px; color:#b0a89c; line-height:2.4; margin-bottom:32px;">
+    この記録は、封じられています。<br>
+    断片を集めた者だけが、ひらくことができます。<br>
+    <span style="font-size:11px; color:#6a6a60;">※入力後、「ひらく」を押してください</span>
+  </div>
+  <input type="text" id="pw" autocomplete="off" placeholder="合言葉"
+    style="background:rgba(0,0,0,0.8); border:1px solid #3a3a3a; color:#e0d0a8; font-family:'MS Gothic',monospace; font-size:18px; padding:12px 16px; width:200px; text-align:center; letter-spacing:0.15em; outline:none;">
+  <button id="openBtn"
+    style="display:block; margin:16px auto 0; background:transparent; border:1px solid #e0d0a8; color:#e0d0a8; font-family:'MS Gothic',monospace; font-size:13px; padding:10px 32px; letter-spacing:0.15em; cursor:pointer;">ひらく</button>
+  <div id="err" style="margin-top:20px; font-size:12px; color:#a44; min-height:20px;"></div>
+  <div style="margin-top:40px;"><a href="diary.html" style="color:#444; text-decoration:none; font-size:11px;">もどる</a></div>
+</div>
+
+<div id="content" style="display:none;">
 
 <header>
   <span class="site-title">煙羅煙羅 / ENRAENRA</span>
@@ -136,8 +138,10 @@
     <p>そう書くと、簡単に見える。<br>でも、実際には何度も時計を見ていた。</p>
     <p>入口の自動販売機の扉。<br>その上の看板。<br>カウンター。<br>ショーケース。<br>小上がり。<br>棚に並んだ瓶。</p>
     <p>昨日まで作っていたものが、<br>今日から人を迎えるものになった。</p>
+
     <img src="diary-009-1.jpg" alt="開店の日の店内を低い位置から見た写真" class="record-photo">
     <div class="photo-caption">開店の日。まだ静かな店内。</div>
+
     <p>開店時間になっても、しばらく誰も来なかった。</p>
     <p>静かだった。</p>
     <p>音楽だけが流れていた。<br>炭の音が小さく鳴った。<br>グラスの中の氷が、少し溶けた。</p>
@@ -153,8 +157,10 @@
     <p>昨日の夜に見た煙より、<br>ずっと自然に見えた。</p>
     <p>誰かが吸って、<br>吐いて、<br>その煙が天井へ上がっていく。</p>
     <p>それだけのことなのに、<br>ずっと前からこうなることが決まっていたみたいだった。</p>
+
     <img src="diary-009-2.jpg" alt="シーシャの煙が残る開店日の店内" class="record-photo">
     <div class="photo-caption">煙が入ったあとの店内。</div>
+
     <p>そのあと、少しずつ人が増えた。</p>
     <p>話し声。<br>笑い声。<br>ライターの音。<br>氷の音。<br>炭を動かす音。</p>
     <p>知らない音が、店の中に増えていった。</p>
@@ -175,10 +181,11 @@
     <div class="reply-sign">——スタッフB</div>
   </div>
 
- <div class="nav-bottom">
-  <a href="diary-008.html">← 記録_008</a>
-  <a href="diary-010.html">記録_010 →</a>
-</div>
+  <div class="nav-bottom">
+    <a href="diary-008.html">← 記録_008</a>
+    <a href="diary-010.html">記録_010 →</a>
+  </div>
+
 </div>
 
 <footer>
@@ -187,6 +194,27 @@
   <a href="diary.html">謎の日記</a><br><br>
   <span style="font-size:10px; color:#444;">このサイトはInternet Explorer 6.0以上推奨です</span>
 </footer>
+
+</div>
+
+<script>
+  var PASSWORD = "開";
+  var pwInput = document.getElementById("pw");
+  var openBtn = document.getElementById("openBtn");
+
+  function unlock() {
+    var input = pwInput.value.trim();
+    if (input === PASSWORD) {
+      document.getElementById("lock").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    } else {
+      document.getElementById("err").textContent = "……ちがいます。";
+      pwInput.value = "";
+    }
+  }
+
+  openBtn.addEventListener("click", unlock);
+</script>
 
 </body>
 </html>
